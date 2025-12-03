@@ -45,7 +45,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>120</x>
       <y>140</y>
       <width>111</width>
       <height>71</height>
@@ -64,7 +64,7 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>360</x>
       <y>140</y>
       <width>111</width>
       <height>71</height>
@@ -83,8 +83,8 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>290</y>
+      <x>120</x>
+      <y>250</y>
       <width>111</width>
       <height>71</height>
      </rect>
@@ -102,8 +102,8 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>210</y>
+      <x>360</x>
+      <y>360</y>
       <width>111</width>
       <height>71</height>
      </rect>
@@ -121,8 +121,8 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>290</y>
+      <x>360</x>
+      <y>250</y>
       <width>111</width>
       <height>71</height>
      </rect>
@@ -135,6 +135,25 @@
     </property>
     <property name="text">
      <string>Kelola Kasir</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>360</y>
+      <width>111</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Kelola Admin</string>
     </property>
    </widget>
   </widget>
