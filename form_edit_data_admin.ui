@@ -42,8 +42,8 @@
      <rect>
       <x>150</x>
       <y>240</y>
-      <width>47</width>
-      <height>13</height>
+      <width>71</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
@@ -52,7 +52,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Nama</string>
+     <string>Username</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -70,14 +70,14 @@
      </font>
     </property>
     <property name="text">
-     <string>Username</string>
+     <string>ID</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>320</y>
+      <y>350</y>
       <width>231</width>
       <height>31</height>
      </rect>
@@ -88,8 +88,8 @@
      <rect>
       <x>150</x>
       <y>280</y>
-      <width>47</width>
-      <height>13</height>
+      <width>71</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="font">
@@ -98,7 +98,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Umur</string>
+     <string>Password</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_5">
@@ -115,7 +115,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>330</y>
+      <y>360</y>
       <width>47</width>
       <height>13</height>
      </rect>
@@ -133,7 +133,7 @@
     <property name="geometry">
      <rect>
       <x>239</x>
-      <y>390</y>
+      <y>420</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -172,7 +172,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Password</string>
+     <string>Nama</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_3">
@@ -199,7 +199,7 @@
     <property name="geometry">
      <rect>
       <x>339</x>
-      <y>390</y>
+      <y>420</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -242,6 +242,34 @@
     </property>
     <property name="text">
      <string>EDIT ADMIN</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_6">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>310</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>320</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Umur</string>
     </property>
    </widget>
   </widget>

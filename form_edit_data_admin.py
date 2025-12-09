@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setGeometry(QtCore.QRect(250, 190, 231, 31))
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(150, 240, 47, 13))
+        self.label_4.setGeometry(QtCore.QRect(150, 240, 71, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_4.setFont(font)
@@ -38,10 +38,10 @@ class Ui_MainWindow(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setGeometry(QtCore.QRect(250, 320, 231, 31))
+        self.comboBox.setGeometry(QtCore.QRect(250, 350, 231, 31))
         self.comboBox.setObjectName("comboBox")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(150, 280, 47, 13))
+        self.label_6.setGeometry(QtCore.QRect(150, 280, 71, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_6.setFont(font)
@@ -50,13 +50,13 @@ class Ui_MainWindow(object):
         self.lineEdit_5.setGeometry(QtCore.QRect(250, 270, 231, 31))
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(150, 330, 47, 13))
+        self.label_5.setGeometry(QtCore.QRect(150, 360, 47, 13))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(239, 390, 81, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(239, 420, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setGeometry(QtCore.QRect(250, 150, 151, 31))
         self.lineEdit.setObjectName("lineEdit")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(339, 390, 81, 31))
+        self.pushButton_2.setGeometry(QtCore.QRect(339, 420, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -104,6 +104,15 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setObjectName("label")
+        self.lineEdit_6 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_6.setGeometry(QtCore.QRect(250, 310, 231, 31))
+        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.label_7 = QtWidgets.QLabel(self.centralwidget)
+        self.label_7.setGeometry(QtCore.QRect(150, 320, 47, 13))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 661, 21))
@@ -115,23 +124,23 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
         self.pushButton_3.clicked.connect(self.kembali)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.pushButton.setText(_translate("MainWindow", "Cari"))
-        self.label_4.setText(_translate("MainWindow", "Nama"))
-        self.label_2.setText(_translate("MainWindow", "Username"))
-        self.label_6.setText(_translate("MainWindow", "Umur"))
+        self.label_4.setText(_translate("MainWindow", "Username"))
+        self.label_2.setText(_translate("MainWindow", "ID"))
+        self.label_6.setText(_translate("MainWindow", "Password"))
         self.label_5.setText(_translate("MainWindow", "Level"))
         self.pushButton_3.setText(_translate("MainWindow", "Kembali"))
-        self.label_3.setText(_translate("MainWindow", "Password"))
+        self.label_3.setText(_translate("MainWindow", "Nama"))
         self.pushButton_2.setText(_translate("MainWindow", "Simpan"))
         self.label.setText(_translate("MainWindow", "EDIT ADMIN"))
-
-
+        self.label_7.setText(_translate("MainWindow", "Umur"))
+    
     def cari_data(self):
         id_admin = self.lineEdit.text()
         admin = Admin.select_by_id([id_admin])
@@ -166,7 +175,6 @@ class Ui_MainWindow(object):
 
         # tutup form sekarang
         QtWidgets.QApplication.instance().activeWindow().close()
-
 
 if __name__ == "__main__":
     import sys
