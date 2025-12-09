@@ -125,7 +125,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.getDataLevel()
         self.pushButton_3.clicked.connect(self.kembali)
+        self.pushButton.clicked.connect(self.cari_data)
+        self.pushButton_2.clicked.connect(self.update_data)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -140,26 +143,31 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Simpan"))
         self.label.setText(_translate("MainWindow", "EDIT ADMIN"))
         self.label_7.setText(_translate("MainWindow", "Umur"))
+        
+    def getDataLevel(self):
+        data = Level.select_data()  
+        for id_level, nama_level in data:
+            self.comboBox.addItem(nama_level, id_level)
     
     def cari_data(self):
         id_admin = self.lineEdit.text()
-        admin = Admin.select_by_id([id_admin])
+        admin = Admin.select_by_id(id_admin)
         nama = admin[1]
         username = admin[2] 
         password = admin[3]
         umur = admin[4] 
-        level = admin[5]
+        nama_level = admin[5]
         self.lineEdit_2.setText(nama)
-        self.lineEdit_.setText(username)
-        self.lineEdit_3.setText(umur)
-        self.lineEdit_5.setText(str(id_admin))
-        self.comboBox.setCurrentText(level)
+        self.lineEdit_3.setText(username)
+        self.lineEdit_5.setText(password)
+        self.lineEdit_6.setText(str(umur))
+        self.comboBox.setCurrentText(str(nama_level))
 
 
     def update_data(self):
         id_admin = self.lineEdit_5.text()
         nama = self.lineEdit_2.text()
-        username = self.lineEdit_4.text()
+        username = self.lineEdit_3.text()
         password = self.lineEdit.text()
         umur = self.lineEdit_3.text()
         level = self.comboBox.currentData()

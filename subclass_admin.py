@@ -99,7 +99,8 @@ class Admin(User):
         db.close()
         return hasil
     
-    def select_by_id(self, id_admin):
+    @staticmethod
+    def select_by_id(id_admin):
         db = get_connection()
         cursor = db.cursor()
         sql = """SELECT admin.id_admin, user.nama, admin.username, admin.password, user.umur, user.id_level
@@ -107,8 +108,8 @@ class Admin(User):
                  JOIN user ON admin.id_admin = user.id
                  WHERE admin.id_admin=%s"""
         cursor.execute(sql, (id_admin,))
-        hasil = cursor.fetchone()
+        data = cursor.fetchone()
         cursor.close()
         db.close()
-        return hasil
+        return data
 
