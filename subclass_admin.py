@@ -98,4 +98,17 @@ class Admin(User):
         cursor.close()
         db.close()
         return hasil
+    
+    def select_by_id(self, id_admin):
+        db = get_connection()
+        cursor = db.cursor()
+        sql = """SELECT admin.id_admin, user.nama, admin.username, admin.password, user.umur, user.id_level
+                 FROM admin
+                 JOIN user ON admin.id_admin = user.id
+                 WHERE admin.id_admin=%s"""
+        cursor.execute(sql, (id_admin,))
+        hasil = cursor.fetchone()
+        cursor.close()
+        db.close()
+        return hasil
 

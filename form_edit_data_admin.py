@@ -132,6 +132,21 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "EDIT ADMIN"))
 
 
+    def cari_data(self):
+        id_admin = self.lineEdit.text()
+        admin = Admin.select_by_id([id_admin])
+        nama = admin[1]
+        username = admin[2] 
+        password = admin[3]
+        umur = admin[4] 
+        level = admin[5]
+        self.lineEdit_2.setText(nama)
+        self.lineEdit_.setText(username)
+        self.lineEdit_3.setText(umur)
+        self.lineEdit_5.setText(str(id_admin))
+        self.comboBox.setCurrentText(level)
+
+
     def update_data(self):
         id_admin = self.lineEdit_5.text()
         nama = self.lineEdit_2.text()
