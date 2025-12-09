@@ -3,7 +3,10 @@ from connection import get_connection
 from superclass import User
 
 class Dokter(User):
-    def __init__(self, id, nama, umur, spesialis, id_level):
+    def __init__(self, id, nama, umur, spesialis, id_level=None):
+        # default id_level = 3 (dokter spesialis) jika tidak diberikan
+        if id_level is None:
+            id_level = 3
         super().__init__(id, nama, umur, id_level)
         self.__spesialis = spesialis
 
@@ -14,6 +17,8 @@ class Dokter(User):
         sql = "INSERT INTO dokter (id_dokter, spesialis) VALUES (%s, %s)"
         cursor.execute(sql, (self.get_id(), self.__spesialis))
         db.commit()
+        cursor.close()
+        db.close()
         print("Dokter berhasil ditambahkan!")
 
     @staticmethod
@@ -26,6 +31,8 @@ class Dokter(User):
         )
         for row in cursor.fetchall():
             print(row)
+        cursor.close()
+        db.close()
 
     def update(self, nama, umur, spesialis):
         # Update USER
@@ -39,8 +46,9 @@ class Dokter(User):
         sql = "UPDATE dokter SET spesialis=%s WHERE id_dokter=%s"
         cursor.execute(sql, (spesialis, self.get_id()))
         db.commit()
+        cursor.close()
+        db.close()
         print("Dokter berhasil diupdate!")
 
     def delete(self):
         super().delete(self.get_id())
-

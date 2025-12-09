@@ -51,6 +51,8 @@ class User:
         hasil = cursor.fetchall()
         for row in hasil:
             print(row)
+        cursor.close()
+        conn.close()
 
     def update(self):
         sql = "UPDATE user SET nama=%s, umur=%s, id_level=%s WHERE id=%s"
@@ -66,14 +68,28 @@ class User:
         sql = "DELETE FROM user WHERE id=%s"
         cursor.execute(sql, (id,))
         conn.commit()
+        cursor.close()
+        conn.close()
         print("User dihapus dari tabel USER.")
 
     def login_admin(self, username, password):
-        sql = "SELECT id_admin, nama FROM admin WHERE username=%s AND password=%s"
+        """
+        Login admin: ambil id_admin dan nama dari join admin + user
+        """
+        sql = """SELECT admin.id_admin, user.nama
+                 FROM admin
+                 JOIN user ON admin.id_admin = user.id
+                 WHERE admin.username=%s AND admin.password=%s"""
         self.cursor.execute(sql, (username, password))
         return self.cursor.fetchone()
 
     def login_kasir(self, username, password):
-        sql = "SELECT id_kasir, nama FROM kasir WHERE username=%s AND password=%s"
+        """
+        Login kasir: ambil id_kasir dan nama dari join kasir + user
+        """
+        sql = """SELECT kasir.id_kasir, user.nama
+                 FROM kasir
+                 JOIN user ON kasir.id_kasir = user.id
+                 WHERE kasir.username=%s AND kasir.password=%s"""
         self.cursor.execute(sql, (username, password))
         return self.cursor.fetchone()

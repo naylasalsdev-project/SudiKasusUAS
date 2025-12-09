@@ -15,6 +15,8 @@ class Admin(User):
         sql = "INSERT INTO admin (id_admin, username, password) VALUES (%s, %s, %s)"
         cursor.execute(sql, (self.get_id(), self.__username, self.__password))
         db.commit()
+        cursor.close()
+        db.close()
         print("Admin berhasil ditambahkan!")
 
     @staticmethod
@@ -27,6 +29,8 @@ class Admin(User):
         )
         for row in cursor.fetchall():
             print(row)
+        cursor.close()
+        db.close()
 
     def update(self, nama, umur, username, password):
         # Update di USER
@@ -40,8 +44,9 @@ class Admin(User):
         sql = "UPDATE admin SET username=%s, password=%s WHERE id_admin=%s"
         cursor.execute(sql, (username, password, self.get_id()))
         db.commit()
+        cursor.close()
+        db.close()
         print("Admin berhasil diupdate!")
 
     def delete(self):
         super().delete(self.get_id())
-
