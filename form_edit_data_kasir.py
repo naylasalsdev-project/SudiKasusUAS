@@ -114,7 +114,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         
-        self.pushButton_3.clicked.connect(self.kembali_kelola_kasir)
+        self.pushButton_3.clicked.connect(self.kembali)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -129,9 +129,14 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "EDIT KASIR"))
         self.label_3.setText(_translate("MainWindow", "Password"))
         
-    def kembali_kelola_kasir(self, main_window, kelola_window):
-        main_window.close()
-        kelola_window.show()
+    def kembali(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = kk.Ui_MainWindow() 
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+        # tutup form sekarang
+        QtWidgets.QApplication.instance().activeWindow().close()
 
 
 if __name__ == "__main__":

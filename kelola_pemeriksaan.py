@@ -96,6 +96,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.pushButton_2.clicked.connect(self.insert_data_pemeriksaan)
+        self.pushButton_3.clicked.connect(self.edit_data_pemeriksaan)
+        self.pushButton_4.clicked.connect(self.delete_data_pemeriksaan)
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -104,6 +108,24 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "Update Data"))
         self.pushButton_4.setText(_translate("MainWindow", "Hapus Data"))
         self.pushButton_2.setText(_translate("MainWindow", "Tambah Data"))
+
+    def insert_data_pemeriksaan(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = fidp.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def edit_data_pemeriksaan(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = fedp.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        
+    def delete_data_pemeriksaan(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = fddp.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
 
 if __name__ == "__main__":

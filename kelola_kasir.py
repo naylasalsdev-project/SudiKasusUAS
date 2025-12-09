@@ -91,7 +91,6 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-        self.main_window = MainWindow
 
 
         self.retranslateUi(MainWindow)
@@ -109,20 +108,6 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "Update Data"))
         self.pushButton_4.setText(_translate("MainWindow", "Hapus Data"))
         self.pushButton_5.setText(_translate("MainWindow", "Lihat Data"))
-        
-    def buka_edit(self):
-        self.edit_window = QtWidgets.QMainWindow()
-        self.edit_ui = fedk.Ui_MainWindow()
-        self.edit_ui.setupUi(self.edit_window)
-
-        # sambungkan tombol "Kembali"
-        self.edit_ui.pushButton_3.clicked.connect(
-                lambda: self.edit_ui.kembali_kelola_kasir(self.edit_window, self.window)
-        )
-
-        self.window.hide()
-        self.edit_window.show()
-
         
     def open_form_insert_data_kasir(self):
         self.window = QtWidgets.QMainWindow()
