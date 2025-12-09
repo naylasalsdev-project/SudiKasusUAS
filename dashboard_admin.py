@@ -11,7 +11,7 @@
 import kelola_dokter as kd
 import kelola_perawat as kp
 import kelola_pasien as kps
-import pemeriksaan as pm
+import kelola_pemeriksaan as kp
 import kelola_admin as ka
 import kelola_kasir as kk
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         
     def open_pemeriksaan(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = pm.Ui_MainWindow()
+        self.ui = kp.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
         
