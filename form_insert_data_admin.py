@@ -117,8 +117,7 @@ class Ui_MainWindow(object):
         self.label_4.setText(_translate("MainWindow", "Umur"))
         self.label_6.setText(_translate("MainWindow", "Username"))
         self.label_7.setText(_translate("MainWindow", "ID"))
-
-        
+  
     def getDataLevel(self):
         data = Level.select_data()  
         for id_level, nama_level in data:

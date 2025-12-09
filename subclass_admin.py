@@ -53,21 +53,30 @@ class Admin(User):
         cursor.close()
         db.close()
 
-    def update(self, nama, umur, username, password):
-        # Update di USER
-        self.set_nama(nama)
-        self.set_umur(umur)
+    def update(self, id_admin, nama, username, password, umur, level):
+        # set nilai agar superclass bisa update USER
+        self._User__id = id_admin
+        self._User__nama = nama
+        self._User__umur = umur
+        self._User__id_level = level
+
+        self.__username = username
+        self.__password = password
+
+        # Update USER
         super().update()
 
-        # Update di ADMIN
+        # Update ADMIN
         db = get_connection()
         cursor = db.cursor()
         sql = "UPDATE admin SET username=%s, password=%s WHERE id_admin=%s"
-        cursor.execute(sql, (username, password, self.get_id()))
+        cursor.execute(sql, (username, password, id_admin))
         db.commit()
         cursor.close()
         db.close()
+
         print("Admin berhasil diupdate!")
+
 
     def delete(self):
         super().delete(self.get_id())
