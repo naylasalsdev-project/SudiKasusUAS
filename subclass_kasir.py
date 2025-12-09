@@ -68,3 +68,17 @@ class Kasir(User):
         cursor.close()
         db.close()
         return hasil
+    
+    @staticmethod
+    def select_by_id(id_kasir):
+        db = get_connection()
+        cursor = db.cursor()
+        sql = """SELECT kasir.id_kasir, user.nama, kasir.username, kasir.password, user.umur, user.id_level
+                 FROM kasir
+                 JOIN user ON kasir.id_kasir = user.id
+                 WHERE kasir.id_kasir=%s"""
+        cursor.execute(sql, (id_kasir,))
+        data = cursor.fetchone()
+        cursor.close()
+        db.close()
+        return data

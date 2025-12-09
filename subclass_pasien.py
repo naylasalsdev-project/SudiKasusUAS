@@ -51,3 +51,17 @@ class Pasien(User):
 
     def delete(self):
         super().delete(self.get_id())
+     
+    @staticmethod   
+    def select_by_id(id_pasien):
+        db = get_connection()
+        cursor = db.cursor()
+        sql = """SELECT pasien.id_pasien, user.nama, user.umur, pasien.penyakit
+                 FROM pasien
+                 JOIN user ON pasien.id_pasien = user.id
+                 WHERE pasien.id_pasien=%s"""
+        cursor.execute(sql, (id_pasien,))
+        data = cursor.fetchone()
+        cursor.close()
+        db.close()
+        return data
