@@ -1,41 +1,46 @@
+# subclass_dokter.py
+from connection import get_connection
 from superclass import User
 
 class Dokter(User):
-    def _init_(self):
-        super()._init_()
+    def __init__(self, id, nama, umur, spesialis, id_level):
+        super().__init__(id, nama, umur, id_level)
+        self.__spesialis = spesialis
 
-    def insert(self, id, nama, umur, spesialis):
-        # Tambahkan ke tabel user dulu
-        super().insert(id, nama, umur)
-        # Lalu ke tabel dokter
-        sql = "INSERT INTO dokter (id, spesialis) VALUES (%s, %s)"
-        val = (id, spesialis)
-        self.mycursor.execute(sql, val)
-        self.mydb.commit()
-        print("1 data dokter berhasil ditambahkan.")
+    def insert(self):
+        super().insert()
+        db = get_connection()
+        cursor = db.cursor()
+        sql = "INSERT INTO dokter (id_dokter, spesialis) VALUES (%s, %s)"
+        cursor.execute(sql, (self.get_id(), self.__spesialis))
+        db.commit()
+        print("Dokter berhasil ditambahkan!")
 
-    def display(self):
-        sql = """
-        SELECT user.id, user.nama, user.umur, dokter.spesialis
-        FROM dokter
-        JOIN user ON dokter.id = user.id
-        """
-        self.mycursor.execute(sql)
-        hasil = self.mycursor.fetchall()
-        for x in hasil:
-            print(x)
+    @staticmethod
+    def display():
+        db = get_connection()
+        cursor = db.cursor()
+        cursor.execute(
+            """SELECT dokter.id_dokter, user.nama, user.umur, dokter.spesialis
+               FROM dokter JOIN user ON dokter.id_dokter=user.id"""
+        )
+        for row in cursor.fetchall():
+            print(row)
 
-    def update(self, id, nama_baru, umur_baru, spesialis_baru):
-        super().update(id, nama_baru, umur_baru)
-        sql = "UPDATE dokter SET spesialis = %s WHERE id = %s"
-        val = (spesialis_baru, id)
-        self.mycursor.execute(sql, val)
-        self.mydb.commit()
-        print("Data dokter berhasil diupdate.")
+    def update(self, nama, umur, spesialis):
+        # Update USER
+        self.set_nama(nama)
+        self.set_umur(umur)
+        super().update()
 
-    def delete(self, id):
-        super().delete(id)
-        print("Data dokter berhasil dihapus dari sistem (termasuk user).")
+        # Update DOKTER
+        db = get_connection()
+        cursor = db.cursor()
+        sql = "UPDATE dokter SET spesialis=%s WHERE id_dokter=%s"
+        cursor.execute(sql, (spesialis, self.get_id()))
+        db.commit()
+        print("Dokter berhasil diupdate!")
 
-    def periksa(self, pasien):
-        print(f"Dokter sedang memeriksa pasien {pasien}.")
+    def delete(self):
+        super().delete(self.get_id())
+
