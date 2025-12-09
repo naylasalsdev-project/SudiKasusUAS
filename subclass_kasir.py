@@ -50,3 +50,21 @@ class Kasir(User):
 
     def delete(self):
         super().delete(self.get_id())
+
+    @staticmethod
+    def cek_login(username, password):
+        from connection import get_connection
+        db = get_connection()
+        cursor = db.cursor()
+
+        sql = """SELECT kasir.id_kasir, user.nama
+                 FROM kasir
+                 JOIN user ON kasir.id_kasir = user.id
+                 WHERE kasir.username=%s AND kasir.password=%s"""
+        
+        cursor.execute(sql, (username, password))
+        hasil = cursor.fetchone()
+
+        cursor.close()
+        db.close()
+        return hasil
