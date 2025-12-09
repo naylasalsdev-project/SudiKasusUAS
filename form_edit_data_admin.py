@@ -165,11 +165,11 @@ class Ui_MainWindow(object):
 
 
     def update_data(self):
-        id_admin = self.lineEdit_5.text()
+        id_admin = self.lineEdit.text()
         nama = self.lineEdit_2.text()
         username = self.lineEdit_3.text()
         password = self.lineEdit.text()
-        umur = self.lineEdit_3.text()
+        umur = self.lineEdit_6.text()
         level = self.comboBox.currentData()
         
         Admin().update(id_admin, nama, username, password, umur, level)
