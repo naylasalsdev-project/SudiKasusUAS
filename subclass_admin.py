@@ -1,23 +1,44 @@
-# subclass_admin.py
-from connection import get_connection
 from superclass import User
+from connection import get_connection
 
 class Admin(User):
-    def __init__(self, id, nama, umur, username, password, id_level=1):
+    def __init__(self, id=None, nama=None, username=None, password=None, umur=None, id_level=1):
         super().__init__(id, nama, umur, id_level)
         self.__username = username
         self.__password = password
 
-    def insert(self):
+
+    def insert(self, id_admin, nama, username, password, umur, level):
+        # Set nilai ke superclass (USER)
+        self._User__id = id_admin
+        self._User__nama = nama
+        self._User__umur = umur
+        self._User__id_level = level
+
+        # Set nilai username dan password
+        self.__username = username
+        self.__password = password
+
+        # Insert ke tabel USER
         super().insert()
+
+        # Insert ke tabel ADMIN
         db = get_connection()
         cursor = db.cursor()
-        sql = "INSERT INTO admin (id_admin, username, password) VALUES (%s, %s, %s)"
-        cursor.execute(sql, (self.get_id(), self.__username, self.__password))
+
+        sql = """
+            INSERT INTO admin (id_admin, username, password)
+            VALUES (%s, %s, %s)
+        """
+
+        cursor.execute(sql, (id_admin, username, password))
         db.commit()
         cursor.close()
         db.close()
+
         print("Admin berhasil ditambahkan!")
+
+
 
     @staticmethod
     def display():
