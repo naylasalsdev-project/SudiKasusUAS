@@ -8,7 +8,7 @@ class Level:
     def select_data():
         db = get_connection()
         cursor = db.cursor()
-        cursor.execute("SELECT id_level, nama_level FROM LEVEL")
+        cursor.execute("SELECT id_level, nama_level FROM level ORDER BY id_level ASC")
         return cursor.fetchall()
 
 

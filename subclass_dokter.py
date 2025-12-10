@@ -26,28 +26,35 @@ class Dokter(User):
         db = get_connection()
         cursor = db.cursor()
         cursor.execute(
-            """SELECT dokter.id_dokter, user.nama, user.umur, dokter.spesialis
-               FROM dokter JOIN user ON dokter.id_dokter=user.id"""
+        """SELECT dokter.id_dokter, user.nama, user.umur, dokter.spesialis, level.nama_level
+        FROM dokter
+        JOIN user ON dokter.id_dokter = user.id
+        JOIN level ON user.id_level = level.id_level"""
         )
         for row in cursor.fetchall():
             print(row)
         cursor.close()
         db.close()
 
-    def update(self, nama, umur, spesialis):
-        # Update USER
+    def update(self, nama, umur, spesialis, id_level):
+        # Update nilai objek terlebih dahulu
         self.set_nama(nama)
         self.set_umur(umur)
+        self.set_id_level(id_level)
+        self.__spesialis = spesialis     # ← INI PENTING BANGET!
+
+        # Update USER (nama, umur, level)
         super().update()
 
-        # Update DOKTER
+        # Update DOKTER (spesialis)
         db = get_connection()
         cursor = db.cursor()
         sql = "UPDATE dokter SET spesialis=%s WHERE id_dokter=%s"
-        cursor.execute(sql, (spesialis, self.get_id()))
+        cursor.execute(sql, (self.__spesialis, self.get_id()))
         db.commit()
         cursor.close()
         db.close()
+
         print("Dokter berhasil diupdate!")
 
     def delete(self):
@@ -57,25 +64,13 @@ class Dokter(User):
     def select_by_id(id_dokter):
         db = get_connection()
         cursor = db.cursor()
-        sql = """SELECT dokter.id_dokter, user.nama, user.umur, dokter.spesialis
+        sql = """SELECT dokter.id_dokter, user.nama, user.umur, level.nama_level
                  FROM dokter
                  JOIN user ON dokter.id_dokter = user.id
+                 JOIN level ON user.id_level = level.id_level
                  WHERE dokter.id_dokter=%s"""
         cursor.execute(sql, (id_dokter,))
         data = cursor.fetchone()
         cursor.close()
         db.close()
         return data
-    
-    @staticmethod
-    def get_level(id_dokter):
-        db = get_connection()
-        cursor = db.cursor()
-        sql = "SELECT id_level FROM user WHERE id=%s"
-        cursor.execute(sql, (id_dokter,))
-        result = cursor.fetchone()
-        cursor.close()
-        db.close()
-        if result:
-            return result[0]
-        return None

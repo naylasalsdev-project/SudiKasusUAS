@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
         
         self.pushButton_3.clicked.connect(self.kembali)
         self.pushButton.clicked.connect(self.cariData)
-        self.pushButton_2.clicked.connect(self.update_data)
+        self.pushButton_2.clicked.connect(self.updateData)
 
         self.getDataLevel()
 
@@ -127,32 +127,35 @@ class Ui_MainWindow(object):
 
     def getDataLevel(self):
         data = Level.select_data()
+        self.comboBox.clear()
         for id_level, nama_level in data:
             self.comboBox.addItem(nama_level, id_level)
-    
+
     def cariData(self):
         id_dokter = self.lineEdit.text()
-        data = Dokter.select_by_id(id_dokter)
-        self.lineEdit_2.setText(data[1])      
-        self.lineEdit_3.setText(str(data[2])) 
-        id_level = Dokter.get_level(id_dokter)
-        self.comboBox.setCurrentIndex(self.comboBox.findData(id_level))
-    
-    def update_data(self):
+        dokter = Dokter.select_by_id(id_dokter)
+        nama = dokter[1]
+        umur = dokter[2]
+        nama_level = dokter[3]
+        self.lineEdit_2.setText(nama)
+        self.lineEdit_3.setText(str(umur))
+        self.comboBox.setCurrentText(nama_level)
+
+    def updateData(self):
         id_dokter = self.lineEdit.text()
         nama = self.lineEdit_2.text()
         umur = int(self.lineEdit_3.text())
         id_level = self.comboBox.currentData()
 
-        data_lama = Dokter.select_by_id(id_dokter)
+        # ambil spesialis lama dari database (biar tidak hilang)
+        data = Dokter.select_by_id(id_dokter)
+        spesialis = data[3]  # index kolom spesialis di SELECT kamu
 
-        spesialis_lama = data_lama[3]  
+        # buat objek Dokter dulu
+        dokter = Dokter(id_dokter, nama, umur, spesialis, id_level)
 
-        dokter = Dokter(id_dokter, nama, umur, spesialis_lama, id_level)
-
-        dokter.update(nama, umur, spesialis_lama)
-
-        print("Data dokter berhasil diupdate!")
+        # lalu update
+        dokter.update(nama, umur, spesialis, id_level)
         
     def kembali(self):
         self.window = QtWidgets.QMainWindow()
