@@ -66,3 +66,16 @@ class Dokter(User):
         cursor.close()
         db.close()
         return data
+    
+    @staticmethod
+    def get_level(id_dokter):
+        db = get_connection()
+        cursor = db.cursor()
+        sql = "SELECT id_level FROM user WHERE id=%s"
+        cursor.execute(sql, (id_dokter,))
+        result = cursor.fetchone()
+        cursor.close()
+        db.close()
+        if result:
+            return result[0]
+        return None

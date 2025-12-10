@@ -78,8 +78,21 @@ class Admin(User):
         print("Admin berhasil diupdate!")
 
 
-    def delete(self):
-        super().delete(self.get_id())
+    def delete(self, id_admin):
+        db = get_connection()
+        cursor = db.cursor()
+
+        sql_admin = "DELETE FROM admin WHERE id_admin=%s"
+        cursor.execute(sql_admin, (id_admin,))
+
+        sql_user = "DELETE FROM user WHERE id=%s"
+        cursor.execute(sql_user, (id_admin,))
+
+        db.commit()
+        cursor.close()
+        db.close()
+
+        print("Admin berhasil dihapus!")
         
     @staticmethod
     def cek_login(username, password):
@@ -103,13 +116,22 @@ class Admin(User):
     def select_by_id(id_admin):
         db = get_connection()
         cursor = db.cursor()
-        sql = """SELECT admin.id_admin, user.nama, admin.username, admin.password, user.umur, user.id_level
-                 FROM admin
-                 JOIN user ON admin.id_admin = user.id
-                 WHERE admin.id_admin=%s"""
+        sql = """
+        SELECT admin.id_admin,
+               user.nama,
+               admin.username,
+               admin.password,
+               user.umur,
+               level.nama_level
+        FROM admin
+        JOIN user ON admin.id_admin = user.id
+        JOIN level ON user.id_level = level.id_level
+        WHERE admin.id_admin=%s
+        """
         cursor.execute(sql, (id_admin,))
         data = cursor.fetchone()
         cursor.close()
         db.close()
         return data
+    
 
