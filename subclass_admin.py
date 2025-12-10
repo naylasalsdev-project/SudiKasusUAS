@@ -9,20 +9,19 @@ class Admin(User):
 
 
     def insert(self, id_admin, nama, username, password, umur, level):
-        # Set nilai ke superclass (USER)
+     
         self._User__id = id_admin
         self._User__nama = nama
         self._User__umur = umur
         self._User__id_level = level
-
-        # Set nilai username dan password
+        
         self.__username = username
         self.__password = password
 
-        # Insert ke tabel USER
+
         super().insert()
 
-        # Insert ke tabel ADMIN
+
         db = get_connection()
         cursor = db.cursor()
 
@@ -54,7 +53,7 @@ class Admin(User):
         db.close()
 
     def update(self, id_admin, nama, username, password, umur, level):
-        # set nilai agar superclass bisa update USER
+    
         self._User__id = id_admin
         self._User__nama = nama
         self._User__umur = umur
@@ -62,11 +61,10 @@ class Admin(User):
 
         self.__username = username
         self.__password = password
-
-        # Update USER
+        
         super().update()
 
-        # Update ADMIN
+    
         db = get_connection()
         cursor = db.cursor()
         sql = "UPDATE admin SET username=%s, password=%s WHERE id_admin=%s"
@@ -81,12 +79,12 @@ class Admin(User):
     def delete(self, id_admin):
         db = get_connection()
         cursor = db.cursor()
+        
+        super().delete(id_admin)
 
         sql_admin = "DELETE FROM admin WHERE id_admin=%s"
         cursor.execute(sql_admin, (id_admin,))
 
-        sql_user = "DELETE FROM user WHERE id=%s"
-        cursor.execute(sql_user, (id_admin,))
 
         db.commit()
         cursor.close()
