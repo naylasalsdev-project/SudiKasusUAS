@@ -106,16 +106,14 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Kembali"))
         
     def InsertDataDokter(self):
-        id_dokter = self.lineEdit.text()
-        nama = self.lineEdit_2.text()
-        umur = int(self.lineEdit_3.text())
+        id_dokter = self.lineEdit.text().strip()
+        nama = self.lineEdit_2.text().strip()
+        umur = self.lineEdit_3.text().strip()
         id_level = self.comboBox.currentData()
-        spesialis = self.comboBox.currentText()
 
-        dokter = Dokter(id_dokter, nama, umur, spesialis, id_level)
+        # Membuat objek dokter sesuai constructor baru
+        dokter = Dokter(id_dokter, nama, umur, id_level)
         dokter.insert()
-
-        print("Data dokter berhasil disimpan!")
 
     
     def getDataLevel(self):

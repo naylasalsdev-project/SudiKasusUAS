@@ -147,16 +147,12 @@ class Ui_MainWindow(object):
         umur = int(self.lineEdit_3.text())
         id_level = self.comboBox.currentData()
 
-        # ambil spesialis lama dari database (biar tidak hilang)
-        data = Dokter.select_by_id(id_dokter)
-        spesialis = data[3]  # index kolom spesialis di SELECT kamu
+        # buat objek dokter
+        dokter = Dokter(id_dokter, nama, umur, id_level)
 
-        # buat objek Dokter dulu
-        dokter = Dokter(id_dokter, nama, umur, spesialis, id_level)
-
-        # lalu update
-        dokter.update(nama, umur, spesialis, id_level)
-        
+        # cukup panggil update() saja, tanpa argumen
+        dokter.update()
+     
     def kembali(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = kd.Ui_MainWindow() 
