@@ -50,6 +50,15 @@ class Transaksi:
         data = cursor.fetchall()
         conn.close()
         return data
+    
+    def delete(self):
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = "DELETE FROM transaksi WHERE id_transaksi = %s"
+        cursor.execute(query, (self.id_transaksi,))
+        conn.commit()   
+        conn.close()
+        
 
     # ================= CEK SUDAH TRANSAKSI =================
     @staticmethod
