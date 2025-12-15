@@ -133,16 +133,13 @@ class Pemeriksaan:
 
         sql = """
             SELECT
-                p.id_pemeriksaan,
-                d.nama_dokter,
-                pr.nama_perawat,
-                ps.nama_pasien,
-                p.tgl_pemeriksaan
-            FROM pemeriksaan p
-            JOIN dokter d ON p.id_dokter = d.id_dokter
-            JOIN perawat pr ON p.id_perawat = pr.id_perawat
-            JOIN pasien ps ON p.id_pasien = ps.id_pasien
-            WHERE p.id_pemeriksaan = %s
+                id_pemeriksaan,
+                nama_dokter,
+                nama_perawat,
+                nama_pasien,
+                tgl_pemeriksaan
+                FROM pemeriksaan
+                WHERE id_pemeriksaan = %s
         """
         cursor.execute(sql, (id_pemeriksaan,))
         data = cursor.fetchone()
