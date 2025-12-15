@@ -9,6 +9,7 @@
 
 from transaksi import Transaksi
 from pemeriksaan import Pemeriksaan
+from layanan import Layanan
 import dashboard_kasir as dk
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -20,7 +21,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(210, 70, 231, 31))
+        self.label.setGeometry(QtCore.QRect(210, 40, 231, 31))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
@@ -28,70 +29,70 @@ class Ui_MainWindow(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(140, 160, 91, 16))
+        self.label_2.setGeometry(QtCore.QRect(140, 130, 91, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(250, 150, 171, 31))
+        self.lineEdit.setGeometry(QtCore.QRect(250, 120, 171, 31))
         self.lineEdit.setObjectName("lineEdit")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(140, 280, 91, 16))
+        self.label_3.setGeometry(QtCore.QRect(140, 250, 91, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(140, 200, 91, 16))
+        self.label_4.setGeometry(QtCore.QRect(140, 170, 91, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(140, 240, 91, 16))
+        self.label_5.setGeometry(QtCore.QRect(140, 210, 91, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(140, 320, 111, 16))
+        self.label_6.setGeometry(QtCore.QRect(140, 330, 111, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(140, 360, 91, 16))
+        self.label_7.setGeometry(QtCore.QRect(140, 370, 91, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
-        self.label_8.setGeometry(QtCore.QRect(140, 440, 91, 16))
+        self.label_8.setGeometry(QtCore.QRect(140, 450, 91, 16))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(250, 190, 241, 31))
+        self.lineEdit_2.setGeometry(QtCore.QRect(250, 160, 241, 31))
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_3.setGeometry(QtCore.QRect(250, 230, 241, 31))
+        self.lineEdit_3.setGeometry(QtCore.QRect(250, 200, 241, 31))
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_4 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_4.setGeometry(QtCore.QRect(250, 270, 241, 31))
+        self.lineEdit_4.setGeometry(QtCore.QRect(250, 240, 241, 31))
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.lineEdit_6 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_6.setGeometry(QtCore.QRect(250, 310, 241, 31))
+        self.lineEdit_6.setGeometry(QtCore.QRect(250, 320, 241, 31))
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.lineEdit_7 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_7.setGeometry(QtCore.QRect(250, 430, 241, 31))
+        self.lineEdit_7.setGeometry(QtCore.QRect(250, 440, 241, 31))
         self.lineEdit_7.setObjectName("lineEdit_7")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(430, 150, 61, 31))
+        self.pushButton.setGeometry(QtCore.QRect(430, 120, 61, 31))
         self.pushButton.setObjectName("pushButton")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(330, 490, 81, 31))
+        self.pushButton_3.setGeometry(QtCore.QRect(330, 500, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -105,7 +106,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(230, 490, 81, 31))
+        self.pushButton_4.setGeometry(QtCore.QRect(230, 500, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -119,17 +120,26 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_4.setObjectName("pushButton_4")
         self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setGeometry(QtCore.QRect(250, 360, 121, 17))
+        self.checkBox.setGeometry(QtCore.QRect(250, 370, 121, 17))
         self.checkBox.setObjectName("checkBox")
         self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_2.setGeometry(QtCore.QRect(250, 400, 131, 17))
+        self.checkBox_2.setGeometry(QtCore.QRect(250, 410, 131, 17))
         self.checkBox_2.setObjectName("checkBox_2")
         self.checkBox_3 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_3.setGeometry(QtCore.QRect(390, 360, 111, 17))
+        self.checkBox_3.setGeometry(QtCore.QRect(390, 370, 111, 17))
         self.checkBox_3.setObjectName("checkBox_3")
         self.checkBox_4 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_4.setGeometry(QtCore.QRect(390, 400, 70, 17))
+        self.checkBox_4.setGeometry(QtCore.QRect(390, 410, 70, 17))
         self.checkBox_4.setObjectName("checkBox_4")
+        self.label_9 = QtWidgets.QLabel(self.centralwidget)
+        self.label_9.setGeometry(QtCore.QRect(140, 290, 91, 16))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.lineEdit_5 = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_5.setGeometry(QtCore.QRect(250, 280, 241, 31))
+        self.lineEdit_5.setObjectName("lineEdit_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 660, 21))
@@ -145,6 +155,12 @@ class Ui_MainWindow(object):
         self.pushButton.clicked.connect(self.cari_pemeriksaan)
         self.pushButton_3.clicked.connect(self.simpan_transaksi)
         self.pushButton_4.clicked.connect(self.kembali)
+
+        # auto hitung total bayar saat checkbox diklik
+        self.checkBox.stateChanged.connect(self.hitung_total_bayar)
+        self.checkBox_2.stateChanged.connect(self.hitung_total_bayar)
+        self.checkBox_3.stateChanged.connect(self.hitung_total_bayar)
+        self.checkBox_4.stateChanged.connect(self.hitung_total_bayar)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -164,6 +180,7 @@ class Ui_MainWindow(object):
         self.checkBox_2.setText(_translate("MainWindow", "Pemeriksaan Spesialis"))
         self.checkBox_3.setText(_translate("MainWindow", "Konsultasi Dokter"))
         self.checkBox_4.setText(_translate("MainWindow", "Kontrol"))
+        self.label_9.setText(_translate("MainWindow", "Penyakit"))
 
     def cari_pemeriksaan(self):
         id_pemeriksaan = self.lineEdit.text()
@@ -174,29 +191,36 @@ class Ui_MainWindow(object):
             self.lineEdit_2.setText(data[1])  # nama dokter
             self.lineEdit_3.setText(data[2])  # nama perawat
             self.lineEdit_4.setText(data[3])  # nama pasien
-            self.lineEdit_6.setText(data[4].strftime("%d-%m-%Y"))
+            self.lineEdit_5.setText(data[4])  # penyakit
+            self.lineEdit_6.setText(data[5].strftime("%d-%m-%Y"))
         else:
             QtWidgets.QMessageBox.warning(
                 None, "Error", "Data pemeriksaan tidak ditemukan."
             )
 
     def hitung_total_bayar(self):
-        total = 0
+        layanan_terpilih = []
 
-        if self.checkBox.isChecked():      # Pemeriksaan Umum
-            total += 50000
+        if self.checkBox.isChecked():
+            layanan_terpilih.append("L001")  # Pemeriksaan Umum
 
-        if self.checkBox_2.isChecked():    # Pemeriksaan Spesialis
-            total += 100000
+        if self.checkBox_2.isChecked():
+            layanan_terpilih.append("L002")  # Pemeriksaan Spesialis
 
-        if self.checkBox_3.isChecked():    # Konsultasi Dokter
-            total += 30000
+        if self.checkBox_3.isChecked():
+            layanan_terpilih.append("L003")  # Konsultasi Dokter
 
-        if self.checkBox_4.isChecked():    # Kontrol
-            total += 20000
+        if self.checkBox_4.isChecked():
+            layanan_terpilih.append("L004")  # Kontrol
 
-        self.lineEdit_7.setText(str(total))
-        return total
+        total = Layanan.hitung_total(layanan_terpilih)
+        self.lineEdit_7.setText(self.format_rupiah(total))
+        self.lineEdit_7.setReadOnly(True)
+
+        return total, layanan_terpilih
+    
+    def format_rupiah(self, angka):
+        return "Rp {:,}".format(angka).replace(",", ".")
 
     def simpan_transaksi(self):
         id_pemeriksaan = self.lineEdit.text()
@@ -205,7 +229,7 @@ class Ui_MainWindow(object):
             QtWidgets.QMessageBox.warning(None, "Error", "ID Pemeriksaan wajib diisi")
             return
 
-        total_bayar = self.hitung_total_bayar()
+        total_bayar, layanan_terpilih = self.hitung_total_bayar()
 
         if total_bayar == 0:
             QtWidgets.QMessageBox.warning(
@@ -219,22 +243,12 @@ class Ui_MainWindow(object):
             total_bayar=total_bayar
         )
 
-        id_transaksi = transaksi.insert()  # pastikan insert return id_transaksi
+        id_transaksi = transaksi.insert()
 
-        # ================= DETAIL TRANSAKSI =================
         from detail_transaksi import DetailTransaksi
 
-        if self.checkBox.isChecked():
-            DetailTransaksi(id_transaksi, 1).insert()
-
-        if self.checkBox_2.isChecked():
-            DetailTransaksi(id_transaksi, 2).insert()
-
-        if self.checkBox_3.isChecked():
-            DetailTransaksi(id_transaksi, 3).insert()
-
-        if self.checkBox_4.isChecked():
-            DetailTransaksi(id_transaksi, 4).insert()
+        for id_layanan in layanan_terpilih:
+            DetailTransaksi(id_transaksi, id_layanan).insert()
 
         QtWidgets.QMessageBox.information(
             None, "Success", "Transaksi berhasil disimpan"
@@ -242,10 +256,9 @@ class Ui_MainWindow(object):
 
     def kembali(self):
         self.window = QtWidgets.QMainWindow()
-        self.ui = dk.Ui_MainWindow()
+        self.ui = dk.Ui_MainWindow() 
         self.ui.setupUi(self.window)
         self.window.show()
-        MainWindow.close()
 
         QtWidgets.QApplication.instance().activeWindow().close()
 

@@ -78,3 +78,21 @@ class Layanan:
         conn.close()
         return data
 
+    @staticmethod
+    def get_biaya_by_id(id_layanan):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "SELECT biaya FROM layanan WHERE id_layanan = %s",
+            (id_layanan,)
+        )
+        data = cursor.fetchone()
+        conn.close()
+        return data[0] if data else 0
+
+    @staticmethod
+    def hitung_total(id_layanan_list):
+        total = 0
+        for id_layanan in id_layanan_list:
+            total += Layanan.get_biaya_by_id(id_layanan)
+        return total

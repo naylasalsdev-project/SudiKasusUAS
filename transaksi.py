@@ -76,3 +76,64 @@ class Transaksi:
         data = cursor.fetchone()
         conn.close()
         return data
+
+    # ================= CARI BY PEMERIKSAAN =================
+    @staticmethod
+    def cari_by_pemeriksaan(id_pemeriksaan):
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT 
+                d.nama_dokter,
+                pr.nama_perawat,
+                ps.nama_pasien,
+                p.tgl_pemeriksaan,
+                t.total_bayar,
+                l.nama_layanan
+            FROM transaksi t
+            JOIN pemeriksaan p ON t.id_pemeriksaan = p.id_pemeriksaan
+            JOIN dokter d ON p.id_dokter = d.id_dokter
+            JOIN perawat pr ON p.id_perawat = pr.id_perawat
+            JOIN pasien ps ON p.id_pasien = ps.id_pasien
+            JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi
+            JOIN layanan l ON dt.id_layanan = l.id_layanan
+            WHERE t.id_pemeriksaan = %s
+        """, (id_pemeriksaan,))
+
+        rows = cursor.fetchall()
+        conn.close()
+
+        if not rows:
+            return None
+
+        nama_dokter = rows[0][0]
+        nama_perawat = rows[0][1]
+        nama_pasien = rows[0][2]
+        tgl_pemeriksaan = rows[0][3]
+        total_bayar = rows[0][4]
+
+        layanan = [row[5] for row in rows]
+
+        return (
+            nama_dokter,
+            nama_perawat,
+            nama_pasien,
+            tgl_pemeriksaan,
+            total_bayar,
+            layanan
+        )
+
+    # ================= DELETE BY PEMERIKSAAN =================
+    @staticmethod
+    def delete_by_pemeriksaan(id_pemeriksaan):
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute(
+            "DELETE FROM transaksi WHERE id_pemeriksaan = %s",
+            (id_pemeriksaan,)
+        )
+
+        conn.commit()
+        conn.close()

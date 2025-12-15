@@ -137,6 +137,7 @@ class Pemeriksaan:
                 d.nama_dokter,
                 pr.nama_perawat,
                 ps.nama_pasien,
+                ps.penyakit,
                 p.tgl_pemeriksaan
             FROM pemeriksaan p
             JOIN dokter d ON p.id_dokter = d.id_dokter
