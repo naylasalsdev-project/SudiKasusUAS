@@ -11,6 +11,7 @@
 import form_insert_data_kasir as fidk
 import form_edit_data_kasir as fedk
 import form_delete_data_kasir as fddk
+import dashboard_kasir as dk
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -109,6 +110,12 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+        self.pushButton_2.clicked.connect(self.open_tambah_kasir)
+        self.pushButton_3.clicked.connect(self.open_edit_kasir)
+        self.pushButton_4.clicked.connect(self.open_hapus_kasir)
+        self.pushButton_5.clicked.connect(self.open_lihat_kasir)
+        self.pushButton_6.clicked.connect(self.keluar)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
