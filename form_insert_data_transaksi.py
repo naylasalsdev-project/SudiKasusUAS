@@ -154,15 +154,15 @@ class Ui_MainWindow(object):
         self.pushButton_4.setText(_translate("MainWindow", "Kembali"))
 
     def cari_pemeriksaan(self):
-        id_pem = self.lineEdit.text()
+        id_pemeriksaan = self.lineEdit.text()
         pemeriksaan = Pemeriksaan()
-        data = Pemeriksaan.select_detail_by_id(id_pem)
+        data = pemeriksaan.cari_data(id_pemeriksaan)
         if data:
             self.lineEdit_2.setText(data[1])
             self.lineEdit_3.setText(data[2])
             self.lineEdit_4.setText(data[3])
-            self.lineEdit_6.setText(data[4])
-            self.comboBox.setCurrentText(data[5])
+            self.lineEdit_6.setText(data[4].strftime("%d-%m-%Y"))
+
         else:
             QtWidgets.QMessageBox.warning(None, "Error", "Data pemeriksaan tidak ditemukan.")
 
