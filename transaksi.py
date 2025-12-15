@@ -2,10 +2,9 @@
 from connection import get_connection
 
 class Transaksi:
-    def __init__(self, id_transaksi=None, id_pemeriksaan=None, id_layanan=None, tanggal=None, total_bayar=None):
+    def __init__(self, id_transaksi=None, id_pemeriksaan=None, tanggal=None, total_bayar=None):
         self.id_transaksi = id_transaksi
         self.id_pemeriksaan = id_pemeriksaan
-        self.id_layanan = id_layanan
         self.tanggal = tanggal
         self.total_bayar = total_bayar
 
@@ -14,16 +13,21 @@ class Transaksi:
         conn = get_connection()
         cursor = conn.cursor()
         query = """
-            INSERT INTO transaksi
-            (id_pemeriksaan, id_layanan, tanggal, total_bayar)
-            VALUES (%s, %s, %s, %s)
+            INSERT INTO transaksi (id_pemeriksaan, tanggal, total_bayar)
+            VALUES (%s, %s, %s)
         """
-        cursor.execute(
-            query,
-            (self.id_pemeriksaan, self.id_layanan, self.tanggal, self.total_bayar)
-        )
+        cursor.execute(query, (
+            self.id_pemeriksaan,
+            self.tanggal,
+            self.total_bayar
+        ))
         conn.commit()
+
+        # ambil id_transaksi terakhir (penting buat detail_transaksi)
+        self.id_transaksi = cursor.lastrowid
+
         conn.close()
+        return self.id_transaksi
 
     # ================= DISPLAY =================
     @staticmethod
@@ -37,7 +41,6 @@ class Transaksi:
                 d.nama_dokter,
                 pr.nama_perawat,
                 ps.nama_pasien,
-                l.nama_layanan,
                 t.tanggal,
                 t.total_bayar
             FROM transaksi t
@@ -45,20 +48,21 @@ class Transaksi:
             JOIN dokter d ON p.id_dokter = d.id_dokter
             JOIN perawat pr ON p.id_perawat = pr.id_perawat
             JOIN pasien ps ON p.id_pasien = ps.id_pasien
-            JOIN layanan l ON t.id_layanan = l.id_layanan
         """)
         data = cursor.fetchall()
         conn.close()
         return data
-    
+
+    # ================= DELETE =================
     def delete(self):
         conn = get_connection()
         cursor = conn.cursor()
-        query = "DELETE FROM transaksi WHERE id_transaksi = %s"
-        cursor.execute(query, (self.id_transaksi,))
-        conn.commit()   
+        cursor.execute(
+            "DELETE FROM transaksi WHERE id_transaksi = %s",
+            (self.id_transaksi,)
+        )
+        conn.commit()
         conn.close()
-        
 
     # ================= CEK SUDAH TRANSAKSI =================
     @staticmethod
