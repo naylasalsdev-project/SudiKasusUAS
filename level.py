@@ -20,3 +20,24 @@ class Level:
         cursor.execute(sql, val)
         db.commit()
         print(cursor.rowcount, "Data berhasil ditambahkan...")
+    
+    @classmethod
+    def get_admin_kasir_levels(cls):
+        """Mengambil hanya level Admin dan Kasir langsung dari database."""
+        conn = get_connection()
+        cursor = conn.cursor()
+        
+        # Menggunakan nama level yang ditemukan di dropdown Anda ('admin', 'kasir')
+        query = """
+            SELECT id_level, nama_level 
+            FROM level 
+            WHERE nama_level IN ('admin', 'kasir') 
+            ORDER BY id_level ASC
+        """
+        
+        cursor.execute(query)
+        results = cursor.fetchall()
+        conn.close()
+        return results
+
+    

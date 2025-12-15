@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
+    <width>644</width>
     <height>600</height>
    </rect>
   </property>
@@ -25,8 +25,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>30</y>
+      <x>230</x>
+      <y>70</y>
       <width>271</width>
       <height>51</height>
      </rect>
@@ -45,8 +45,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>140</y>
+      <x>140</x>
+      <y>160</y>
       <width>131</width>
       <height>71</height>
      </rect>
@@ -56,6 +56,14 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(0, 85, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
     </property>
     <property name="text">
      <string>Kelola Dokter</string>
@@ -64,8 +72,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>140</y>
+      <x>360</x>
+      <y>160</y>
       <width>131</width>
       <height>71</height>
      </rect>
@@ -75,6 +83,14 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(0, 85, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
     </property>
     <property name="text">
      <string>Kelola Perawat</string>
@@ -83,8 +99,8 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>250</y>
+      <x>140</x>
+      <y>270</y>
       <width>131</width>
       <height>71</height>
      </rect>
@@ -94,6 +110,14 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(0, 85, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
     </property>
     <property name="text">
      <string>Kelola Pasien</string>
@@ -102,8 +126,8 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>360</y>
+      <x>360</x>
+      <y>380</y>
       <width>131</width>
       <height>71</height>
      </rect>
@@ -113,6 +137,14 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(0, 85, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
     </property>
     <property name="text">
      <string> Kelola Pemeriksaan </string>
@@ -121,8 +153,8 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>250</y>
+      <x>360</x>
+      <y>270</y>
       <width>131</width>
       <height>71</height>
      </rect>
@@ -132,6 +164,14 @@
       <weight>75</weight>
       <bold>true</bold>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(0, 85, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
     </property>
     <property name="text">
      <string>Kelola Kasir</string>
@@ -140,8 +180,8 @@
    <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>360</y>
+      <x>140</x>
+      <y>380</y>
       <width>131</width>
       <height>71</height>
      </rect>
@@ -152,8 +192,44 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(0, 85, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
+    </property>
     <property name="text">
      <string>Kelola Admin</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>500</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(170, 0, 0);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
+    </property>
+    <property name="text">
+     <string>Logout</string>
     </property>
    </widget>
   </widget>
@@ -162,7 +238,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>620</width>
+     <width>644</width>
      <height>21</height>
     </rect>
    </property>

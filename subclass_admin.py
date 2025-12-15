@@ -1,135 +1,118 @@
+# subclass_admin.py
 from superclass import User
 from connection import get_connection
 
 class Admin(User):
-    def __init__(self, id=None, nama=None, username=None, password=None, umur=None, id_level=1):
+    def __init__(self, id=None, nama=None, umur=None, id_level=1,
+                 username=None, password=None):
         super().__init__(id, nama, umur, id_level)
         self.__username = username
         self.__password = password
 
-
-    def insert(self, id_admin, nama, username, password, umur, level):
-     
-        self._User__id = id_admin
-        self._User__nama = nama
-        self._User__umur = umur
-        self._User__id_level = level
-        
-        self.__username = username
-        self.__password = password
-
-
+    # =========================
+    # CREATE / INSERT
+    # =========================
+    def insert(self):
+        # insert ke tabel USER
         super().insert()
 
-
-        db = get_connection()
-        cursor = db.cursor()
-
+        # insert ke tabel ADMIN
         sql = """
             INSERT INTO admin (id_admin, username, password)
             VALUES (%s, %s, %s)
         """
+        self.cursor.execute(sql, (self.get_id(), self.__username, self.__password))
+        self.conn.commit()
+        print("Admin berhasil ditambahkan....")
 
-        cursor.execute(sql, (id_admin, username, password))
-        db.commit()
-        cursor.close()
-        db.close()
-
-        print("Admin berhasil ditambahkan!")
-
-
-
+    # =========================
+    # READ
+    # =========================
     @staticmethod
     def display():
-        db = get_connection()
-        cursor = db.cursor()
-        cursor.execute(
-            """SELECT admin.id_admin, user.nama, user.umur, admin.username
-               FROM admin JOIN user ON admin.id_admin=user.id"""
-        )
-        for row in cursor.fetchall():
-            print(row)
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT admin.id_admin,
+                   user.nama,
+                   user.umur,
+                   admin.username
+            FROM admin
+            JOIN user ON admin.id_admin = user.id
+        """
+        cursor.execute(sql)
+        data = cursor.fetchall()
         cursor.close()
-        db.close()
+        conn.close()
+        return data
 
-    def update(self, id_admin, nama, username, password, umur, level):
-    
-        self._User__id = id_admin
-        self._User__nama = nama
-        self._User__umur = umur
-        self._User__id_level = level
-
-        self.__username = username
-        self.__password = password
-        
-        super().update()
-
-    
-        db = get_connection()
-        cursor = db.cursor()
-        sql = "UPDATE admin SET username=%s, password=%s WHERE id_admin=%s"
-        cursor.execute(sql, (username, password, id_admin))
-        db.commit()
-        cursor.close()
-        db.close()
-
-        print("Admin berhasil diupdate!")
-
-
-    def delete(self, id_admin):
-        db = get_connection()
-        cursor = db.cursor()
-        
-        super().delete(id_admin)
-
-        sql_admin = "DELETE FROM admin WHERE id_admin=%s"
-        cursor.execute(sql_admin, (id_admin,))
-
-
-        db.commit()
-        cursor.close()
-        db.close()
-
-        print("Admin berhasil dihapus!")
-        
-    @staticmethod
-    def cek_login(username, password):
-        from connection import get_connection
-        db = get_connection()
-        cursor = db.cursor()
-
-        sql = """SELECT admin.id_admin, user.nama
-                 FROM admin
-                 JOIN user ON admin.id_admin = user.id
-                 WHERE admin.username=%s AND admin.password=%s"""
-        
-        cursor.execute(sql, (username, password))
-        hasil = cursor.fetchone()
-
-        cursor.close()
-        db.close()
-        return hasil
-    
     @staticmethod
     def select_by_id(id_admin):
-        db = get_connection()
-        cursor = db.cursor()
+        conn = get_connection()
+        cursor = conn.cursor()
         sql = """
-        SELECT admin.id_admin,
-               user.nama,
-               admin.username,
-               admin.password,
-               user.umur,
-               level.nama_level
-        FROM admin
-        JOIN user ON admin.id_admin = user.id
-        JOIN level ON user.id_level = level.id_level
-        WHERE admin.id_admin=%s
+            SELECT admin.id_admin,
+                   user.nama,
+                   admin.username,
+                   admin.password,
+                   user.umur,
+                   level.nama_level
+            FROM admin
+            JOIN user ON admin.id_admin = user.id
+            JOIN level ON user.id_level = level.id_level
+            WHERE admin.id_admin=%s
         """
         cursor.execute(sql, (id_admin,))
         data = cursor.fetchone()
         cursor.close()
-        db.close()
+        conn.close()
         return data
-    
 
+    # =========================
+    # UPDATE
+    # =========================
+    def update(self):
+        # update tabel USER
+        super().update()
+
+        # update tabel ADMIN
+        sql = """
+            UPDATE admin
+            SET username=%s, password=%s
+            WHERE id_admin=%s
+        """
+        self.cursor.execute(sql, (self.__username, self.__password, self.get_id()))
+        self.conn.commit()
+        print("Admin berhasil diupdate....")
+
+    # =========================
+    # DELETE
+    # =========================
+    def delete(self):
+        # hapus dari admin dulu
+        sql = "DELETE FROM admin WHERE id_admin=%s"
+        self.cursor.execute(sql, (self.get_id(),))
+        self.conn.commit()
+
+        # hapus dari user
+        User.delete(self.get_id())
+        print("Admin berhasil dihapus....")
+
+    # =========================
+    # LOGIN
+    # =========================
+    @staticmethod
+    def cek_login(username, password):
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT admin.id_admin, user.nama
+            FROM admin
+            JOIN user ON admin.id_admin = user.id
+            WHERE admin.username=%s AND admin.password=%s
+        """
+        cursor.execute(sql, (username, password))
+        data = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return data

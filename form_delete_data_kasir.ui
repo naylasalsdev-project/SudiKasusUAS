@@ -44,7 +44,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    background-color: rgb(0, 85, 255);
+    background-color: rgb(170, 0, 0);
     color: white;
     border-radius: 5px;   
     padding: 6px;           
@@ -235,7 +235,7 @@
      <x>0</x>
      <y>0</y>
      <width>620</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

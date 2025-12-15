@@ -1,73 +1,96 @@
-from connection import get_connection
 from superclass import User
+from connection import get_connection
+
 
 class Dokter(User):
-    def __init__(self, id, nama, umur, id_level=3):
+    def __init__(self, id, nama, umur, spesialis, id_level=5):
         super().__init__(id, nama, umur, id_level)
+        self._spesialis = spesialis
 
     def insert(self):
-        # insert ke tabel user (superclass)
+        # 1️⃣ insert ke user
         super().insert()
 
-        # insert ke tabel dokter
-        db = get_connection()
-        cursor = db.cursor()
-        sql = "INSERT INTO dokter (id_dokter) VALUES (%s)"
-        cursor.execute(sql, (self.get_id(),))
-        db.commit()
+        # 2️⃣ insert ke dokter (ISI nama_dokter)
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = """
+            INSERT INTO dokter (id_dokter, nama_dokter, spesialis)
+            VALUES (%s, %s, %s)
+        """
+        cursor.execute(
+            query,
+            (self.get_id(), self.get_nama(), self._spesialis)
+        )
+        conn.commit()
+        conn.close()
 
-        cursor.close()
-        db.close()
-
+    # ================= DISPLAY =================
     @staticmethod
     def display():
         db = get_connection()
         cursor = db.cursor()
         cursor.execute("""
-            SELECT dokter.id_dokter, user.nama, user.umur, level.nama_level
+            SELECT dokter.id_dokter, user.nama, user.umur, dokter.spesialis, level.nama_level
             FROM dokter
             JOIN user ON dokter.id_dokter = user.id
             JOIN level ON user.id_level = level.id_level
         """)
         data = cursor.fetchall()
-
         cursor.close()
         db.close()
         return data
 
+    # ================= UPDATE =================
     def update(self):
-        # update tabel user
+        # update user
         super().update()
 
-        print("Dokter berhasil diupdate!")
+        # update dokter
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = """
+            UPDATE dokter
+            SET nama_dokter=%s, spesialis=%s
+            WHERE id_dokter=%s
+        """
+        cursor.execute(
+            query,
+            (self.get_nama(), self._spesialis, self.get_id())
+        )
+        conn.commit()
+        conn.close()
 
-
+    # ================= DELETE =================
     @staticmethod
     def delete(id_dokter):
-        db = get_connection()
-        cursor = db.cursor()
-        sql = "DELETE FROM dokter WHERE id_dokter=%s"
-        val = (id_dokter,)
-        cursor.execute(sql, val)
-        cursor.close()
-        db.commit()
-        deleted = cursor.rowcount
-        db.disconnect()
-        return deleted
+        # 1️⃣ hapus dari tabel dokter dulu
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "DELETE FROM dokter WHERE id_dokter=%s",
+            (id_dokter,)
+        )
+        conn.commit()
+        conn.close()
 
+        # 2️⃣ hapus dari user
+        User.delete(id_dokter)
+        
+
+    # ================= SELECT BY ID =================
     @staticmethod
     def select_by_id(id_dokter):
         db = get_connection()
         cursor = db.cursor()
         cursor.execute("""
-            SELECT dokter.id_dokter, user.nama, user.umur, level.nama_level, user.id_level
+            SELECT dokter.id_dokter, user.nama, user.umur, dokter.spesialis, level.nama_level, user.id_level
             FROM dokter
             JOIN user ON dokter.id_dokter = user.id
             JOIN level ON user.id_level = level.id_level
             WHERE dokter.id_dokter = %s
         """, (id_dokter,))
         data = cursor.fetchone()
-
         cursor.close()
         db.close()
         return data

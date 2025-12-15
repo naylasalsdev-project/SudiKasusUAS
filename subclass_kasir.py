@@ -1,56 +1,71 @@
-# subclass_kasir.py
-from connection import get_connection
 from superclass import User
+from connection import get_connection
 
 class Kasir(User):
-    def __init__(self, id, nama, umur, username, password, id_level=2):
+    def __init__(self, id, nama, umur, id_level, id_kasir, username, password):
         super().__init__(id, nama, umur, id_level)
-        self.__username = username
-        self.__password = password
+        self._id_kasir = id_kasir
+        self._username = username
+        self._password = password
+        self.table_name = "kasir"
 
-    def insert(self):
-        super().insert()
-        db = get_connection()
-        cursor = db.cursor()
-        sql = "INSERT INTO kasir (id_kasir, username, password) VALUES (%s, %s, %s)"
-        cursor.execute(sql, (self.get_id(), self.__username, self.__password))
-        db.commit()
-        cursor.close()
-        db.close()
-        print("Kasir berhasil ditambahkan!")
+    def Hitung_harga_total(self, pemeriksaan_id):
+        print(f"Kasir {self._username} sedang menghitung total harga untuk Pemeriksaan ID: {pemeriksaan_id}...")
+        return 150000
+    
+    def create(self):
+        super().create()
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = f"""
+            INSERT INTO {self.table_name} (id_kasir, username, password)
+            VALUES (%s, %s, %s)
+        """
+        data = (self._id_kasir, self._username, self._password)
+        cursor.execute(query, data)
+        conn.commit()
+        conn.close()
+        print(f"-> Detail Kasir '{self._username}' berhasil ditambahkan.")
 
-    @staticmethod
-    def display():
-        db = get_connection()
-        cursor = db.cursor()
-        cursor.execute(
-            """SELECT kasir.id_kasir, user.nama, user.umur, kasir.username
-               FROM kasir JOIN user ON kasir.id_kasir=user.id"""
-        )
-        for row in cursor.fetchall():
-            print(row)
-        cursor.close()
-        db.close()
+    @classmethod
+    def display(cls):
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = f"SELECT id_kasir, username FROM {cls().table_name}"
+        cursor.execute(query)
+        results = cursor.fetchall()
+        print("\n--- Data Kasir (Detail) ---")
+        for row in results:
+            print(f"ID Kasir: {row[0]}, Username: {row[1]}")
+        conn.close()
+        return results
 
-    def update(self, nama, umur, username, password):
-        # Update USER
-        self.set_nama(nama)
-        self.set_umur(umur)
+    def update(self):
         super().update()
-
-        # Update KASIR
-        db = get_connection()
-        cursor = db.cursor()
-        sql = "UPDATE kasir SET username=%s, password=%s WHERE id_kasir=%s"
-        cursor.execute(sql, (username, password, self.get_id()))
-        db.commit()
-        cursor.close()
-        db.close()
-        print("Kasir berhasil diupdate!")
-
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = f"""
+            UPDATE {self.table_name}
+            SET username = %s, password = %s
+            WHERE id_kasir = %s
+        """
+        data = (self._username, self._password, self._id_kasir)
+        cursor.execute(query, data)
+        conn.commit()
+        conn.close()
+        print(f"-> Detail Kasir ID '{self._id_kasir}' berhasil diperbarui.")
+    
     def delete(self):
-        super().delete(self.get_id())
-
+        super().delete()
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = f"DELETE FROM {self.table_name} WHERE id_kasir = %s"
+        data = (self._id_kasir,)
+        cursor.execute(query, data)
+        conn.commit()
+        conn.close()
+        print(f"-> Detail Kasir ID '{self._id_kasir}' berhasil dihapus.")
+    
     @staticmethod
     def cek_login(username, password):
         from connection import get_connection
@@ -68,17 +83,20 @@ class Kasir(User):
         cursor.close()
         db.close()
         return hasil
-    
-    @staticmethod
-    def select_by_id(id_kasir):
-        db = get_connection()
-        cursor = db.cursor()
-        sql = """SELECT kasir.id_kasir, user.nama, kasir.username, kasir.password, user.umur, user.id_level
-                 FROM kasir
-                 JOIN user ON kasir.id_kasir = user.id
-                 WHERE kasir.id_kasir=%s"""
-        cursor.execute(sql, (id_kasir,))
-        data = cursor.fetchone()
-        cursor.close()
-        db.close()
-        return data
+
+    @classmethod
+    def select_by_id(cls, kasir_id):
+        conn = get_connection()
+        cursor = conn.cursor()
+        query = f"SELECT id_kasir, username FROM {cls().table_name} WHERE id_kasir = %s"
+        cursor.execute(query, (kasir_id,))
+        result = cursor.fetchone()
+        
+        conn.close()
+        
+        if result:
+            print(f"-> Kasir ditemukan: ID {result[0]}, Username {result[1]}")
+        else:
+            print(f"-> Kasir dengan ID '{kasir_id}' tidak ditemukan.")
+            
+        return result

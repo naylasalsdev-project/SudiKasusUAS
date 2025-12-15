@@ -10,13 +10,14 @@
 import form_insert_data_admin as fida
 import form_edit_data_admin as feda
 import form_delete_data_admin as fdda
+import lihat_data_admin as lda
+import dashboard_admin as da
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(644, 568)
+        MainWindow.resize(663, 568)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
@@ -83,9 +84,23 @@ class Ui_MainWindow(object):
 "    padding: 6px;           \n"
 "}")
         self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_6.setGeometry(QtCore.QRect(290, 440, 81, 41))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_6.setFont(font)
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(170, 0, 0);\n"
+"    color: white;\n"
+"    border-radius: 5px;   \n"
+"    padding: 6px;           \n"
+"}")
+        self.pushButton_6.setObjectName("pushButton_6")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 644, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 663, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -94,10 +109,12 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
         self.pushButton_2.clicked.connect(self.open_tambah_admin)
         self.pushButton_3.clicked.connect(self.open_edit_admin)
         self.pushButton_4.clicked.connect(self.open_hapus_admin)
+        self.pushButton_5.clicked.connect(self.open_lihat_admin)
+        self.pushButton_6.clicked.connect(self.keluar)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -107,18 +124,23 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Tambah Data"))
         self.label.setText(_translate("MainWindow", "KELOLA ADMIN"))
         self.pushButton_3.setText(_translate("MainWindow", "Update Data"))
-        
+        self.pushButton_6.setText(_translate("MainWindow", "Keluar"))
+
     def open_tambah_admin(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = fida.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_edit_admin(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = feda.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_hapus_admin(self):
         self.window = QtWidgets.QMainWindow()
@@ -126,6 +148,23 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+        QtWidgets.QApplication.instance().activeWindow().close()
+
+    def open_lihat_admin(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = lda.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
+
+    def keluar(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = da.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
 
 if __name__ == "__main__":
     import sys

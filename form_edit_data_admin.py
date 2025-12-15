@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
+"    background-color: rgb(170, 0, 0);\n"
 "    color: white;\n"
 "    border-radius: 5px;   \n"
 "    padding: 6px;           \n"
@@ -143,7 +143,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Simpan"))
         self.label.setText(_translate("MainWindow", "EDIT ADMIN"))
         self.label_7.setText(_translate("MainWindow", "Umur"))
-        
+    
     def getDataLevel(self):
         data = Level.select_data()  
         for id_level, nama_level in data:
@@ -168,21 +168,21 @@ class Ui_MainWindow(object):
         id_admin = self.lineEdit.text()
         nama = self.lineEdit_2.text()
         username = self.lineEdit_3.text()
-        password = self.lineEdit.text()
+        password = self.lineEdit_5.text()
         umur = self.lineEdit_6.text()
         level = self.comboBox.currentData()
-        
-        Admin().update(id_admin, nama, username, password, umur, level)
 
-        
+        admin = Admin(id=id_admin,nama=nama,umur=umur,id_level=level,username=username,password=password)
+        admin.update()
+    
     def kembali(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = ka.Ui_MainWindow() 
         self.ui.setupUi(self.window)
         self.window.show()
 
-        # tutup form sekarang
         QtWidgets.QApplication.instance().activeWindow().close()
+
 
 if __name__ == "__main__":
     import sys

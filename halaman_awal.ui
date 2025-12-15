@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>644</width>
+    <width>661</width>
     <height>584</height>
    </rect>
   </property>
@@ -54,13 +54,41 @@
      <string>RUMAH SAKIT &quot;SEHAT BERSAMA&quot;</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>310</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: rgb(85, 0, 255);
+    color: white;
+    border-radius: 5px;   
+    padding: 6px;           
+}</string>
+    </property>
+    <property name="text">
+     <string>Masuk</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>644</width>
+     <width>661</width>
      <height>21</height>
     </rect>
    </property>

@@ -7,11 +7,12 @@ class User:
         self.__nama = nama
         self.__umur = umur
         self.__id_level = id_level
-        
+
+        # koneksi dipakai bersama (penting buat login)
         self.conn = get_connection()
         self.cursor = self.conn.cursor()
 
-    # Getter
+    # ===== Getter =====
     def get_id(self):
         return self.__id
 
@@ -24,7 +25,7 @@ class User:
     def get_id_level(self):
         return self.__id_level
 
-    # Setter
+    # ===== Setter =====
     def set_nama(self, nama):
         self.__nama = nama
 
@@ -34,14 +35,16 @@ class User:
     def set_id_level(self, id_level):
         self.__id_level = id_level
 
-    # CRUD dasar untuk USER
+    # ===== CRUD USER =====
     def insert(self):
-        sql = """INSERT INTO user (id, nama, umur, id_level)
-                 VALUES (%s, %s, %s, %s)"""
+        sql = """
+            INSERT INTO user (id, nama, umur, id_level)
+            VALUES (%s, %s, %s, %s)
+        """
         val = (self.__id, self.__nama, self.__umur, self.__id_level)
         self.cursor.execute(sql, val)
         self.conn.commit()
-        print("User berhasil ditambahkan ke tabel USER!")
+        print("User berhasil ditambahkan ke tabel USER....")
 
     @staticmethod
     def display():
@@ -49,47 +52,48 @@ class User:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM user")
         hasil = cursor.fetchall()
-        for row in hasil:
-            print(row)
         cursor.close()
         conn.close()
+        return hasil
 
     def update(self):
-        sql = "UPDATE user SET nama=%s, umur=%s, id_level=%s WHERE id=%s"
+        sql = """
+            UPDATE user
+            SET nama = %s, umur = %s, id_level = %s
+            WHERE id = %s
+        """
         val = (self.__nama, self.__umur, self.__id_level, self.__id)
         self.cursor.execute(sql, val)
         self.conn.commit()
-        print("User berhasil diupdate!")
+        print("User berhasil diupdate....")
 
     @staticmethod
     def delete(id):
         conn = get_connection()
         cursor = conn.cursor()
-        sql = "DELETE FROM user WHERE id=%s"
-        cursor.execute(sql, (id,))
+        cursor.execute("DELETE FROM user WHERE id=%s", (id,))
         conn.commit()
         cursor.close()
         conn.close()
-        print("User dihapus dari tabel USER.")
+        print("User berhasil dihapus....")
 
+    # ===== LOGIN =====
     def login_admin(self, username, password):
+        sql = """
+            SELECT admin.id_admin, user.nama
+            FROM admin
+            JOIN user ON admin.id_admin = user.id
+            WHERE admin.username=%s AND admin.password=%s
         """
-        Login admin: ambil id_admin dan nama dari join admin + user
-        """
-        sql = """SELECT admin.id_admin, user.nama
-                 FROM admin
-                 JOIN user ON admin.id_admin = user.id
-                 WHERE admin.username=%s AND admin.password=%s"""
         self.cursor.execute(sql, (username, password))
         return self.cursor.fetchone()
 
     def login_kasir(self, username, password):
+        sql = """
+            SELECT kasir.id_kasir, user.nama
+            FROM kasir
+            JOIN user ON kasir.id_kasir = user.id
+            WHERE kasir.username=%s AND kasir.password=%s
         """
-        Login kasir: ambil id_kasir dan nama dari join kasir + user
-        """
-        sql = """SELECT kasir.id_kasir, user.nama
-                 FROM kasir
-                 JOIN user ON kasir.id_kasir = user.id
-                 WHERE kasir.username=%s AND kasir.password=%s"""
         self.cursor.execute(sql, (username, password))
         return self.cursor.fetchone()

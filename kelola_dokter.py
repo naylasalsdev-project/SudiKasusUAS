@@ -10,6 +10,9 @@
 import form_insert_data_dokter as fidd
 import form_edit_dokter as fed
 import form_delete_data_dokter as fddd
+import lihat_data_dokter as ldd
+import dashboard_admin as da
+import kelola_admin as ka
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -20,7 +23,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(210, 130, 261, 41))
+        self.label.setGeometry(QtCore.QRect(200, 90, 261, 41))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
@@ -28,7 +31,7 @@ class Ui_MainWindow(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(360, 210, 151, 91))
+        self.pushButton_3.setGeometry(QtCore.QRect(350, 170, 151, 91))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -42,7 +45,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(150, 210, 151, 91))
+        self.pushButton_2.setGeometry(QtCore.QRect(140, 170, 151, 91))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -56,7 +59,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(150, 340, 151, 91))
+        self.pushButton_4.setGeometry(QtCore.QRect(140, 300, 151, 91))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -70,7 +73,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(360, 340, 151, 91))
+        self.pushButton_5.setGeometry(QtCore.QRect(350, 300, 151, 91))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -83,6 +86,20 @@ class Ui_MainWindow(object):
 "    padding: 6px;           \n"
 "}")
         self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_6.setGeometry(QtCore.QRect(280, 430, 81, 41))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_6.setFont(font)
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(170, 0, 0);\n"
+"    color: white;\n"
+"    border-radius: 5px;   \n"
+"    padding: 6px;           \n"
+"}")
+        self.pushButton_6.setObjectName("pushButton_6")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 643, 21))
@@ -94,10 +111,12 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
+
         self.pushButton_2.clicked.connect(self.open_tambah_dokter)
         self.pushButton_3.clicked.connect(self.open_edit_dokter)
         self.pushButton_4.clicked.connect(self.open_hapus_dokter)
+        self.pushButton_5.clicked.connect(self.open_lihat_dokter)
+        self.pushButton_6.clicked.connect(self.keluar)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -107,18 +126,23 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Tambah Data"))
         self.pushButton_4.setText(_translate("MainWindow", "Hapus Data"))
         self.pushButton_5.setText(_translate("MainWindow", "Lihat Data"))
-        
+        self.pushButton_6.setText(_translate("MainWindow", "Keluar"))
+
     def open_tambah_dokter(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = fidd.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_edit_dokter(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = fed.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_hapus_dokter(self):
         self.window = QtWidgets.QMainWindow()
@@ -126,6 +150,23 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+        QtWidgets.QApplication.instance().activeWindow().close()
+
+    def open_lihat_dokter(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = ldd.Ui_MainWindow()   
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
+
+    def keluar(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = da.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+        QtWidgets.QApplication.instance().activeWindow().close()
 
 if __name__ == "__main__":
     import sys
