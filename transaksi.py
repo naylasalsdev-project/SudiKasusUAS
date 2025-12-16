@@ -1,6 +1,5 @@
 # transaksi.py
 from connection import get_connection
-from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Transaksi:
     def __init__(self, id_transaksi=None, id_pemeriksaan=None, tanggal=None, total_bayar=None):
@@ -42,6 +41,7 @@ class Transaksi:
                 d.nama_dokter,
                 pr.nama_perawat,
                 ps.nama_pasien,
+                ps.penyakit,
                 t.tanggal,
                 t.total_bayar
             FROM transaksi t
@@ -180,20 +180,5 @@ class Transaksi:
         conn.close()
         return data
 
-    def tampilkan_data(self, data):
-        self.tableWidget.setRowCount(0)
 
-        for row_number, row_data in enumerate(data):
-            self.tableWidget.insertRow(row_number)
-
-            for column_number, value in enumerate(row_data):
-
-                # kalau tipe tanggal
-                if hasattr(value, "strftime"):
-                    value = value.strftime("%d-%m-%Y")
-
-                self.tableWidget.setItem(
-                    row_number,
-                    column_number,
-                    QtWidgets.QTableWidgetItem(str(value)))
 
