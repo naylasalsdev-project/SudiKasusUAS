@@ -116,3 +116,50 @@ class Admin(User):
         cursor.close()
         conn.close()
         return data
+    
+    # =========================
+    # READ (UNTUK GUI)
+    # =========================
+    @staticmethod
+    def get_all_admin():
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                a.id_admin,
+                u.nama,
+                u.umur,
+                a.username,
+                a.password
+            FROM user u
+            JOIN admin a ON a.id_admin = u.id
+            WHERE u.id_level = 1
+        """
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data
+
+
+    @staticmethod
+    def get_admin_by_id(id_admin):
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                a.id_admin,
+                u.nama,
+                u.umur,
+                a.username,
+                a.password
+            FROM user u
+            JOIN admin a ON a.id_admin = u.id
+            WHERE a.id_admin = %s AND u.id_level = 1
+        """
+        cursor.execute(sql, (id_admin,))
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data
+

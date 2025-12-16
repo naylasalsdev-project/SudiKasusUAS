@@ -91,3 +91,45 @@ class Perawat(User):
         cursor.close()
         db.close()
         return data
+
+    # ================= SELECT ALL (UNTUK TABEL) =================
+    @staticmethod
+    def get_all():
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                p.id_perawat,
+                u.nama,
+                u.umur,
+                p.shift
+            FROM perawat p
+            JOIN user u ON p.id_perawat = u.id
+        """
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data
+
+
+    # ================= SELECT BY ID (UNTUK TABEL) =================
+    @staticmethod
+    def get_by_id(id_perawat):
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                p.id_perawat,
+                u.nama,
+                u.umur,
+                p.shift
+            FROM perawat p
+            JOIN user u ON p.id_perawat = u.id
+            WHERE p.id_perawat = %s
+        """
+        cursor.execute(sql, (id_perawat,))
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data

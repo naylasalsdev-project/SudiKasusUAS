@@ -19,118 +19,129 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(644, 600)
-        MainWindow.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
+        MainWindow.resize(1121, 670)
+        MainWindow.setStyleSheet("QMainWindow {\n"
+"    background-color: rgb(255, 243, 229);          \n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(230, 70, 271, 51))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(140, 160, 131, 71))
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
+        self.centralwidget.setStyleSheet("QWidget {\n"
+"    background-color: rgb(255, 243, 229);          \n"
 "}")
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(360, 160, 131, 71))
+        self.centralwidget.setObjectName("centralwidget")
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1121, 631))
+        self.frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_2.setGeometry(QtCore.QRect(620, 190, 201, 111))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_2.setFont(font)
         self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
         self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(140, 270, 131, 71))
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(360, 380, 131, 71))
+        self.pushButton_4 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_4.setGeometry(QtCore.QRect(620, 450, 201, 111))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_4.setFont(font)
         self.pushButton_4.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
         self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_6 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_6.setGeometry(QtCore.QRect(360, 270, 131, 71))
+        self.pushButton = QtWidgets.QPushButton(self.frame)
+        self.pushButton.setGeometry(QtCore.QRect(320, 190, 201, 111))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.pushButton_7 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_7.setGeometry(QtCore.QRect(140, 380, 131, 71))
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_7 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_7.setGeometry(QtCore.QRect(320, 450, 201, 111))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_7.setFont(font)
         self.pushButton_7.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
         self.pushButton_7.setObjectName("pushButton_7")
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(280, 500, 81, 41))
+        self.pushButton_3 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_3.setGeometry(QtCore.QRect(320, 320, 201, 111))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_6 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_6.setGeometry(QtCore.QRect(620, 320, 201, 111))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_6.setFont(font)
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.widget = QtWidgets.QWidget(self.frame)
+        self.widget.setGeometry(QtCore.QRect(0, 0, 1131, 111))
+        self.widget.setStyleSheet("QWidget {\n"
+"    background-color: rgb(0, 0, 255);\n"
+"    border-radius: 5px        \n"
+"}")
+        self.widget.setObjectName("widget")
+        self.label = QtWidgets.QLabel(self.widget)
+        self.label.setGeometry(QtCore.QRect(460, 30, 241, 51))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("QLabel {\n"
+"    color : white\n"
+"    }")
+        self.label.setObjectName("label")
+        self.pushButton_5 = QtWidgets.QPushButton(self.widget)
+        self.pushButton_5.setGeometry(QtCore.QRect(1010, 30, 91, 51))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_5.setFont(font)
         self.pushButton_5.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(170, 0, 0);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
+"   background-color: rgb(255, 0, 0);\n"
+"   color: white;    \n"
+"   border-radius: 5px;   \n"
+"   padding: 6px;}")
         self.pushButton_5.setObjectName("pushButton_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 644, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1121, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -139,7 +150,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+        
         self.pushButton.clicked.connect(self.open_dokter)
         self.pushButton_2.clicked.connect(self.open_perawat)
         self.pushButton_3.clicked.connect(self.open_pasien)
@@ -151,50 +162,56 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Dashboard Admin"))
-        self.pushButton.setText(_translate("MainWindow", "Kelola Dokter"))
         self.pushButton_2.setText(_translate("MainWindow", "Kelola Perawat"))
-        self.pushButton_3.setText(_translate("MainWindow", "Kelola Pasien"))
         self.pushButton_4.setText(_translate("MainWindow", " Kelola Pemeriksaan "))
-        self.pushButton_6.setText(_translate("MainWindow", "Kelola Kasir"))
+        self.pushButton.setText(_translate("MainWindow", "Kelola Dokter"))
         self.pushButton_7.setText(_translate("MainWindow", "Kelola Admin"))
+        self.pushButton_3.setText(_translate("MainWindow", "Kelola Pasien"))
+        self.pushButton_6.setText(_translate("MainWindow", "Kelola Kasir"))
+        self.label.setText(_translate("MainWindow", "Dashboard Admin"))
         self.pushButton_5.setText(_translate("MainWindow", "Logout"))
-
+        
     def open_dokter(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = kd.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_perawat(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = kpr.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_pasien(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = kps.Ui_MainWindow()
         self.ui.setupUi(self.window)
-        self.window.show()  
+        self.window.show() 
+        QtWidgets.QApplication.instance().activeWindow().close() 
         
     def open_pemeriksaan(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = kpm.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_admin(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = ka.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def open_kasir(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = kk.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
 
     def logout(self):
         self.window = QtWidgets.QMainWindow()
@@ -202,7 +219,9 @@ class Ui_MainWindow(object):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        
         QtWidgets.QApplication.instance().activeWindow().close()
+
 
 if __name__ == "__main__":
     import sys

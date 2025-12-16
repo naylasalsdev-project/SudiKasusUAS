@@ -9,82 +9,106 @@
 
 import form_insert_data_transaksi as fidt
 import form_delete_data_transaksi as fddt
+import lihat_riwayat_transaksi as lrt
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(661, 584)
+        MainWindow.resize(1121, 657)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        MainWindow.setFont(font)
+        MainWindow.setStyleSheet("QMainWindow {\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("QWidget{\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
         self.centralwidget.setObjectName("centralwidget")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(210, 130, 221, 41))
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1121, 631))
+        self.frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_2.setGeometry(QtCore.QRect(810, 260, 251, 201))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton = QtWidgets.QPushButton(self.frame)
+        self.pushButton.setGeometry(QtCore.QRect(70, 260, 251, 201))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_3 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_3.setGeometry(QtCore.QRect(440, 260, 251, 201))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 115, 1);\n"
+"   color: white;    \n"
+"   border-radius: 15px;   \n"
+"   padding: 6px;}")
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.widget = QtWidgets.QWidget(self.frame)
+        self.widget.setGeometry(QtCore.QRect(0, 0, 1131, 111))
+        self.widget.setStyleSheet("QWidget {\n"
+"    background-color: rgb(0, 0, 255);\n"
+"    border-radius: 5px        \n"
+"}")
+        self.widget.setObjectName("widget")
+        self.label = QtWidgets.QLabel(self.widget)
+        self.label.setGeometry(QtCore.QRect(450, 30, 231, 51))
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
         self.label.setFont(font)
+        self.label.setStyleSheet("QLabel {\n"
+"    color : white\n"
+"    }")
         self.label.setObjectName("label")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(150, 210, 151, 91))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(330, 210, 141, 91))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(280, 450, 81, 41))
+        self.pushButton_5 = QtWidgets.QPushButton(self.widget)
+        self.pushButton_5.setGeometry(QtCore.QRect(1010, 30, 91, 51))
         font = QtGui.QFont()
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_5.setFont(font)
         self.pushButton_5.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(170, 0, 0);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
+"   background-color: rgb(255, 0, 0);\n"
+"   color: white;    \n"
+"   border-radius: 5px;   \n"
+"   padding: 6px;}")
         self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(230, 320, 181, 91))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(0, 85, 255);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
-"}")
-        self.pushButton_4.setObjectName("pushButton_4")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 661, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1121, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -94,30 +118,41 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         
-        self.pushButton_2.clicked.connect(self.tampah_transaksi)
+        self.pushButton.clicked.connect(self.tampah_transaksi)
+        self.pushButton_2.clicked.connect(self.lihat_riwayat_transaksi)
         self.pushButton_3.clicked.connect(self.hapus_transaksi)
         self.pushButton_5.clicked.connect(self.logout)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "DASHBOARD KASIR"))
-        self.pushButton_2.setText(_translate("MainWindow", "Tambah Transaksi"))
+        self.pushButton_2.setText(_translate("MainWindow", "Lihat Riwayat Transaksi"))
+        self.pushButton.setText(_translate("MainWindow", "Tambah Transaksi"))
         self.pushButton_3.setText(_translate("MainWindow", "Hapus Transaksi"))
+        self.label.setText(_translate("MainWindow", "Dashboard Kasir"))
         self.pushButton_5.setText(_translate("MainWindow", "Logout"))
-        self.pushButton_4.setText(_translate("MainWindow", "Lihat Riwayat Transaksi"))
+        
         
     def tampah_transaksi(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = fidt.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def hapus_transaksi(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = fddt.Ui_MainWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
+        
+    def lihat_riwayat_transaksi(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = lrt.Ui_MainWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        QtWidgets.QApplication.instance().activeWindow().close()
         
     def logout(self):
         self.window = QtWidgets.QMainWindow()
@@ -127,6 +162,7 @@ class Ui_MainWindow(object):
         self.window.show()
 
         QtWidgets.QApplication.instance().activeWindow().close()
+
 
 if __name__ == "__main__":
     import sys

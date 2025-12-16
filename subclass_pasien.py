@@ -62,8 +62,7 @@ class Pasien(User):
                 SELECT pasien.id_pasien,
                 user.nama,
                 user.umur,
-                pasien.penyakit,
-                user.id_level
+                pasien.penyakit
             FROM pasien
             JOIN user ON pasien.id_pasien = user.id
             WHERE pasien.id_pasien = %s
@@ -72,3 +71,46 @@ class Pasien(User):
         data = cursor.fetchone()
         conn.close()
         return data
+    
+    # =========================
+    # READ (UNTUK GUI)
+    # =========================
+    @staticmethod
+    def get_all_pasien():
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                p.id_pasien,
+                u.nama,
+                u.umur,
+                p.penyakit
+            FROM pasien p
+            JOIN user u ON p.id_pasien = u.id
+        """
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data
+
+
+    @staticmethod
+    def get_pasien_by_id(id_pasien):
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                p.id_pasien,
+                u.nama,
+                u.umur
+            FROM pasien p
+            JOIN user u ON p.id_pasien = u.id
+            WHERE p.id_pasien = %s
+        """
+        cursor.execute(sql, (id_pasien,))
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data
+

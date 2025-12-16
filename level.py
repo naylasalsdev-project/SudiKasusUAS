@@ -39,5 +39,18 @@ class Level:
         results = cursor.fetchall()
         conn.close()
         return results
-
     
+
+    @staticmethod
+    def get_level_dokter():
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT id_level, nama_level
+            FROM level
+            WHERE nama_level IN ('Dokter Umum', 'Dokter Spesialis')
+            ORDER BY id_level
+        """)
+        data = cursor.fetchall()
+        conn.close()
+        return data

@@ -3,7 +3,7 @@ from connection import get_connection
 
 
 class Dokter(User):
-    def __init__(self, id, nama, umur, spesialis, id_level=5):
+    def __init__(self, id, nama, umur, id_level, spesialis):
         super().__init__(id, nama, umur, id_level)
         self._spesialis = spesialis
 
@@ -94,3 +94,52 @@ class Dokter(User):
         cursor.close()
         db.close()
         return data
+
+    # ================= UNTUK TABEL =================
+    @staticmethod
+    def get_all():
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT
+                d.id_dokter,
+                u.nama,
+                u.umur,
+                d.spesialis
+            FROM dokter d
+            JOIN user u ON d.id_dokter = u.id
+        """)
+        data = cursor.fetchall()
+        conn.close()
+        return data
+
+    @staticmethod
+    def get_by_id(id_dokter):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT
+                d.id_dokter,
+                u.nama,
+                u.umur,
+                d.spesialis
+            FROM dokter d
+            JOIN user u ON d.id_dokter = u.id
+            WHERE d.id_dokter = %s
+        """, (id_dokter,))
+        data = cursor.fetchall()
+        conn.close()
+        return data
+    
+    @staticmethod
+    def get_spesialis_id(id_dokter):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT d.spesialis
+            FROM dokter d
+            WHERE d.id_dokter = %s
+        """, (id_dokter,))
+        data = cursor.fetchall()
+        conn.close()
+        return data    

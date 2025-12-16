@@ -81,7 +81,7 @@ class Transaksi:
 
     # ================= CARI BY PEMERIKSAAN =================
     @staticmethod
-    def cari_by_pemeriksaan(id_pemeriksaan):
+    def cari_by_pemeriksaan(id_transaksi):
         conn = get_connection()
         cursor = conn.cursor()
 
@@ -101,8 +101,8 @@ class Transaksi:
             JOIN pasien ps ON p.id_pasien = ps.id_pasien
             JOIN detail_transaksi dt ON t.id_transaksi = dt.id_transaksi
             JOIN layanan l ON dt.id_layanan = l.id_layanan
-            WHERE t.id_pemeriksaan = %s
-        """, (id_pemeriksaan,))
+            WHERE dt.id_transaksi = %s
+        """, (id_transaksi,))
 
         rows = cursor.fetchall()
         conn.close()
@@ -128,20 +128,6 @@ class Transaksi:
             total_bayar,
             layanan
         )
-
-    # ================= DELETE BY PEMERIKSAAN =================
-    @staticmethod
-    def delete_by_pemeriksaan(id_pemeriksaan):
-        conn = get_connection()
-        cursor = conn.cursor()
-
-        cursor.execute(
-            "DELETE FROM transaksi WHERE id_pemeriksaan = %s",
-            (id_pemeriksaan,)
-        )
-
-        conn.commit()
-        conn.close()
 
     @staticmethod
     def riwayat(id_transaksi=None):
@@ -181,5 +167,15 @@ class Transaksi:
         conn.close()
         return data
 
+    @staticmethod
+    def delete_by_id(id_transaksi):
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "DELETE FROM transaksi WHERE id_transaksi = %s",
+            (id_transaksi,)
+        )
+        conn.commit()
+        conn.close()
 
 

@@ -150,3 +150,44 @@ class Pemeriksaan:
         cursor.close()
         return data
 
+    # ================= SELECT ALL =================
+    @staticmethod
+    def get_all():
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                id_pemeriksaan,
+                id_dokter,
+                id_perawat,
+                id_pasien,
+                tgl_pemeriksaan
+            FROM pemeriksaan
+        """
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data
+
+
+    # ================= SELECT BY ID (UNTUK TABEL) =================
+    @staticmethod
+    def get_by_id(id_pemeriksaan):
+        conn = get_connection()
+        cursor = conn.cursor()
+        sql = """
+            SELECT
+                id_pemeriksaan,
+                id_dokter,
+                id_perawat,
+                id_pasien,
+                tgl_pemeriksaan
+            FROM pemeriksaan
+            WHERE id_pemeriksaan = %s
+        """
+        cursor.execute(sql, (id_pemeriksaan,))
+        data = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return data

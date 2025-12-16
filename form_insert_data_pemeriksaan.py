@@ -18,126 +18,193 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(644, 587)
+        MainWindow.resize(1031, 678)
+        MainWindow.setStyleSheet("QMainWindow{ \n"
+"    background-color: rgb(255, 249, 239);\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("QWidget{ \n"
+"    background-color: rgb(255, 249, 239);\n"
+"}")
         self.centralwidget.setObjectName("centralwidget")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(170, 150, 81, 16))
-        self.label_2.setObjectName("label_2")
-        self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setGeometry(QtCore.QRect(170, 240, 81, 16))
-        self.label_5.setObjectName("label_5")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(290, 150, 181, 20))
-        self.lineEdit.setObjectName("lineEdit")
-
-        # ID pemeriksaan otomatis (tidak diinput user)
-        self.lineEdit.setReadOnly(True)
-        self.lineEdit.setPlaceholderText("Otomatis")
-
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(290, 180, 121, 20))
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(170, 180, 81, 16))
-        self.label_3.setObjectName("label_3")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(210, 440, 81, 31))
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1031, 651))
+        self.frame.setStyleSheet("QFrame{ \n"
+"    background-color: rgb(255, 249, 239);\n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.label_9 = QtWidgets.QLabel(self.frame)
+        self.label_9.setGeometry(QtCore.QRect(110, 430, 121, 16))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(170, 0, 0);\n"
+        self.label_9.setFont(font)
+        self.label_9.setObjectName("label_9")
+        self.label_4 = QtWidgets.QLabel(self.frame)
+        self.label_4.setGeometry(QtCore.QRect(360, 50, 331, 51))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+        self.label_11 = QtWidgets.QLabel(self.frame)
+        self.label_11.setGeometry(QtCore.QRect(570, 250, 111, 16))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_11.setFont(font)
+        self.label_11.setObjectName("label_11")
+        self.label_5 = QtWidgets.QLabel(self.frame)
+        self.label_5.setGeometry(QtCore.QRect(110, 250, 111, 16))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.label_6 = QtWidgets.QLabel(self.frame)
+        self.label_6.setGeometry(QtCore.QRect(110, 160, 81, 16))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.label_21 = QtWidgets.QLabel(self.frame)
+        self.label_21.setGeometry(QtCore.QRect(570, 160, 81, 16))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_21.setFont(font)
+        self.label_21.setObjectName("label_21")
+        self.label_16 = QtWidgets.QLabel(self.frame)
+        self.label_16.setGeometry(QtCore.QRect(110, 340, 91, 16))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_16.setFont(font)
+        self.label_16.setObjectName("label_16")
+        self.label_17 = QtWidgets.QLabel(self.frame)
+        self.label_17.setGeometry(QtCore.QRect(570, 340, 181, 21))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_17.setFont(font)
+        self.label_17.setObjectName("label_17")
+        self.dateEdit = QtWidgets.QDateEdit(self.frame)
+        self.dateEdit.setGeometry(QtCore.QRect(570, 370, 351, 41))
+        self.dateEdit.setStyleSheet("QDateEdit {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
+        self.dateEdit.setObjectName("dateEdit")
+        self.dateEdit.setDate(QtCore.QDate.currentDate())
+        self.pushButton_7 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_7.setGeometry(QtCore.QRect(390, 550, 101, 41))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_7.setFont(font)
+        self.pushButton_7.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(255, 0, 0);\n"
 "    color: white;\n"
 "    border-radius: 5px;   \n"
 "    padding: 6px;           \n"
 "}")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(330, 440, 81, 31))
+        self.pushButton_7.setObjectName("pushButton_7")
+        self.pushButton_6 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_6.setGeometry(QtCore.QRect(540, 550, 101, 41))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
+        self.pushButton_6.setFont(font)
+        self.pushButton_6.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(0, 85, 255);\n"
 "    color: white;\n"
 "    border-radius: 5px;   \n"
 "    padding: 6px;           \n"
 "}")
-        self.pushButton.setObjectName("pushButton")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(210, 70, 271, 51))
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.lineEdit_3 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_3.setGeometry(QtCore.QRect(290, 210, 151, 20))
-        self.lineEdit_3.setObjectName("lineEdit_3")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(170, 210, 81, 16))
-        self.label_4.setObjectName("label_4")
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_4.setGeometry(QtCore.QRect(290, 270, 181, 20))
+        self.pushButton_6.setObjectName("pushButton_6")
+        self.lineEdit_4 = QtWidgets.QLineEdit(self.frame)
+        self.lineEdit_4.setGeometry(QtCore.QRect(110, 190, 271, 41))
+        self.lineEdit_4.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
         self.lineEdit_4.setObjectName("lineEdit_4")
-        self.lineEdit_5 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_5.setGeometry(QtCore.QRect(290, 300, 121, 20))
-        self.lineEdit_5.setObjectName("lineEdit_5")
-        self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(170, 270, 81, 16))
-        self.label_6.setObjectName("label_6")
-        self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(170, 300, 81, 16))
-        self.label_7.setObjectName("label_7")
-        self.lineEdit_6 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_6.setGeometry(QtCore.QRect(290, 330, 181, 20))
-        self.lineEdit_6.setObjectName("lineEdit_6")
-        self.label_8 = QtWidgets.QLabel(self.centralwidget)
-        self.label_8.setGeometry(QtCore.QRect(170, 330, 81, 16))
-        self.label_8.setObjectName("label_8")
-        self.lineEdit_7 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_7.setGeometry(QtCore.QRect(290, 360, 181, 20))
-        self.lineEdit_7.setObjectName("lineEdit_7")
-        self.label_9 = QtWidgets.QLabel(self.centralwidget)
-        self.label_9.setGeometry(QtCore.QRect(170, 360, 81, 16))
-        self.label_9.setObjectName("label_9")
-        self.lineEdit_8 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_8.setGeometry(QtCore.QRect(290, 240, 121, 20))
-        self.lineEdit_8.setObjectName("lineEdit_8")
-
-        readonly_style = """
-        QLineEdit {
-            background-color: #f0f0f0;
-            color: #555;
-        }
-        """
-
-        readonly_fields = [
-            self.lineEdit_3,  # Nama Dokter
-            self.lineEdit_4,  # Nama Perawat
-            self.lineEdit_6   # Nama Pasien
-        ]
-
-        for field in readonly_fields:
-            field.setReadOnly(True)
-            field.setStyleSheet(readonly_style)
-
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(420, 180, 51, 23))
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(420, 240, 51, 23))
+        self.pushButton_4 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_4.setGeometry(QtCore.QRect(400, 190, 61, 41))
+        self.pushButton_4.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 85, 255);\n"
+"    border-radius: 8px;\n"
+"    color: white\n"
+"}")
         self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(420, 300, 51, 23))
+        self.lineEdit_6 = QtWidgets.QLineEdit(self.frame)
+        self.lineEdit_6.setGeometry(QtCore.QRect(110, 370, 271, 41))
+        self.lineEdit_6.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
+        self.lineEdit_6.setObjectName("lineEdit_6")
+        self.pushButton_5 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_5.setGeometry(QtCore.QRect(400, 370, 61, 41))
+        self.pushButton_5.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 85, 255);\n"
+"    border-radius: 8px;\n"
+"    color: white\n"
+"}")
         self.pushButton_5.setObjectName("pushButton_5")
+        self.lineEdit_8 = QtWidgets.QLineEdit(self.frame)
+        self.lineEdit_8.setGeometry(QtCore.QRect(570, 190, 271, 41))
+        self.lineEdit_8.setStyleSheet("QLineEdit {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
+        self.lineEdit_8.setObjectName("lineEdit_8")
+        self.pushButton_8 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_8.setGeometry(QtCore.QRect(860, 190, 61, 41))
+        self.pushButton_8.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 85, 255);\n"
+"    border-radius: 8px;\n"
+"    color: white\n"
+"}")
+        self.pushButton_8.setObjectName("pushButton_8")
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(110, 280, 351, 41))
+        self.label.setStyleSheet("QLabel {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
+        self.label.setText("")
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(self.frame)
+        self.label_2.setGeometry(QtCore.QRect(110, 460, 351, 41))
+        self.label_2.setStyleSheet("QLabel {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
+        self.label_2.setText("")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.frame)
+        self.label_3.setGeometry(QtCore.QRect(570, 280, 351, 41))
+        self.label_3.setStyleSheet("QLabel {\n"
+"    border: 2px solid rgb(76, 115, 255);\n"
+"    background-color: rgb(219, 224, 255);\n"
+"    border-radius: 8px\n"
+"}")
+        self.label_3.setText("")
+        self.label_3.setObjectName("label_3")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 644, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1031, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -146,33 +213,32 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        
-        self.pushButton_3.clicked.connect(self.cari_dokter)
-        self.pushButton_4.clicked.connect(self.cari_perawat)
-        self.pushButton_5.clicked.connect(self.cari_pasien)
-        self.pushButton.clicked.connect(self.insert_data)
-        self.pushButton_2.clicked.connect(self.kembali)
+
+        self.pushButton_4.clicked.connect(self.cari_dokter)
+        self.pushButton_5.clicked.connect(self.cari_perawat)
+        self.pushButton_8.clicked.connect(self.cari_pasien)
+        self.pushButton_6.clicked.connect(self.insert_data)
+        self.pushButton_7.clicked.connect(self.kembali)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_2.setText(_translate("MainWindow", "ID Pemeriksaan"))
-        self.label_5.setText(_translate("MainWindow", "ID Perawat"))
-        self.label_3.setText(_translate("MainWindow", "ID Dokter"))
-        self.pushButton_2.setText(_translate("MainWindow", "Kembali"))
-        self.pushButton.setText(_translate("MainWindow", "Simpan"))
-        self.label.setText(_translate("MainWindow", "Tambah Pemeriksaan"))
-        self.label_4.setText(_translate("MainWindow", "Nama Dokter"))
-        self.label_6.setText(_translate("MainWindow", "Nama Perawat"))
-        self.label_7.setText(_translate("MainWindow", "ID Pasien"))
-        self.label_8.setText(_translate("MainWindow", "Nama Pasien"))
-        self.label_9.setText(_translate("MainWindow", "Tgl Pemeriksaan"))
-        self.pushButton_3.setText(_translate("MainWindow", "Cari"))
+        self.label_9.setText(_translate("MainWindow", "Nama Perawat"))
+        self.label_4.setText(_translate("MainWindow", "Tambah Pemeriksaan"))
+        self.label_11.setText(_translate("MainWindow", "Nama Pasien"))
+        self.label_5.setText(_translate("MainWindow", "Nama Dokter"))
+        self.label_6.setText(_translate("MainWindow", "ID Dokter"))
+        self.label_21.setText(_translate("MainWindow", "ID Pasien"))
+        self.label_16.setText(_translate("MainWindow", "ID Perawat"))
+        self.label_17.setText(_translate("MainWindow", "Tanggal Pemeriksaan"))
+        self.pushButton_7.setText(_translate("MainWindow", "Kembali"))
+        self.pushButton_6.setText(_translate("MainWindow", "Simpan"))
         self.pushButton_4.setText(_translate("MainWindow", "Cari"))
         self.pushButton_5.setText(_translate("MainWindow", "Cari"))
+        self.pushButton_8.setText(_translate("MainWindow", "Cari"))
 
     def cari_dokter(self):
-        id_dokter = self.lineEdit_2.text()
+        id_dokter = self.lineEdit_4.text()
 
         if not id_dokter:
             QtWidgets.QMessageBox.warning(None, "Error", "ID Dokter belum diisi")
@@ -181,57 +247,57 @@ class Ui_MainWindow(object):
         data = Dokter.select_by_id(id_dokter)
 
         if data:
-            self.lineEdit_3.setText(data[1])  # nama dokter
+            self.label.setText(data[1])  # nama dokter
         else:
             QtWidgets.QMessageBox.warning(None, "Error", "Dokter tidak ditemukan")
 
     def cari_perawat(self):
-        id_perawat = self.lineEdit_8.text()
+        id_perawat = self.lineEdit_6.text()
         data = Perawat.select_by_id(id_perawat)
 
         if data:
-            self.lineEdit_4.setText(data[1])
+            self.label_2.setText(data[1])
         else:
             QtWidgets.QMessageBox.warning(None, "Error", "Perawat tidak ditemukan")
 
     def cari_pasien(self):
-        id_pasien = self.lineEdit_5.text()
+        id_pasien = self.lineEdit_8.text()
         data = Pasien.select_by_id(id_pasien)
 
         if data:
-            self.lineEdit_6.setText(data[1]) 
+            self.label_3.setText(data[1]) 
         else:
             QtWidgets.QMessageBox.warning(None, "Error", "Pasien tidak ditemukan")
 
     def insert_data(self):
-        id_dokter = self.lineEdit_2.text()
-        id_perawat = self.lineEdit_8.text()
-        id_pasien = self.lineEdit_5.text()
-        tanggal = self.lineEdit_7.text()
+        id_dokter = self.lineEdit_4.text().strip()
+        id_perawat = self.lineEdit_6.text().strip()
+        id_pasien = self.lineEdit_8.text().strip()
 
-        if not id_dokter or not id_perawat or not id_pasien or not tanggal:
-            QtWidgets.QMessageBox.warning(
-                None, "Error", "Data belum lengkap"
-            )
-            return
+        tanggal = self.dateEdit.date().toString("yyyy-MM-dd")
 
-        pemeriksaan = Pemeriksaan(id_dokter=id_dokter,id_perawat=id_perawat,id_pasien=id_pasien,tanggal=tanggal)
+        pemeriksaan = Pemeriksaan(
+            id_dokter=id_dokter,
+            id_perawat=id_perawat,
+            id_pasien=id_pasien,
+            tanggal=tanggal
+        )
         pemeriksaan.insert()
 
-        self.lineEdit.setText(str(pemeriksaan.id))
-
         QtWidgets.QMessageBox.information(
-            None, "Sukses", "Data pemeriksaan berhasil ditambahkan"
+            None,
+            "Sukses",
+            f"Data pemeriksaan berhasil ditambahkan\nID Pemeriksaan: {pemeriksaan.id}"
         )
 
-        self.lineEdit.clear()
-        self.lineEdit_2.clear()
-        self.lineEdit_3.clear()
+        # reset form
         self.lineEdit_4.clear()
-        self.lineEdit_5.clear()
         self.lineEdit_6.clear()
-        self.lineEdit_7.clear()
         self.lineEdit_8.clear()
+        self.label.clear()
+        self.label_2.clear()
+        self.label_3.clear()
+        self.dateEdit.setDate(QtCore.QDate.currentDate())
     
     def kembali(self):
         self.window = QtWidgets.QMainWindow()
@@ -239,7 +305,8 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
-        QtWidgets.QApplication.instance().activeWindow().close()    
+        QtWidgets.QApplication.instance().activeWindow().close()
+
 
 if __name__ == "__main__":
     import sys

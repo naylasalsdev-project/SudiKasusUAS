@@ -15,25 +15,38 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(642, 586)
+        MainWindow.resize(1032, 676)
+        MainWindow.setStyleSheet("QMainWindow {\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setStyleSheet("QWidget {\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(290, 410, 81, 31))
+        self.frame = QtWidgets.QFrame(self.centralwidget)
+        self.frame.setGeometry(QtCore.QRect(0, 0, 1031, 651))
+        self.frame.setStyleSheet("QFrame {\n"
+"    background-color: rgb(255, 243, 229);          \n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.pushButton = QtWidgets.QPushButton(self.frame)
+        self.pushButton.setGeometry(QtCore.QRect(940, 140, 71, 41))
         font = QtGui.QFont()
         font.setPointSize(8)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(170, 0, 0);\n"
-"    color: white;\n"
-"    border-radius: 5px;   \n"
-"    padding: 6px;           \n"
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("QPushButton {\n"
+"    background-color: rgb(0, 85, 255);\n"
+"    border-radius: 8px;\n"
+"    color: white\n"
 "}")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(230, 180, 191, 31))
+        self.pushButton.setObjectName("pushButton")
+        self.lineEdit = QtWidgets.QLineEdit(self.frame)
+        self.lineEdit.setGeometry(QtCore.QRect(20, 130, 911, 61))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.lineEdit.setFont(font)
@@ -44,22 +57,9 @@ class Ui_MainWindow(object):
 "font-size: 14px;\n"
 "")
         self.lineEdit.setObjectName("lineEdit")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(240, 90, 251, 61))
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(140, 190, 71, 20))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(110, 240, 431, 141))
+        self.lineEdit.setPlaceholderText("Cari ID")
+        self.tableWidget = QtWidgets.QTableWidget(self.frame)
+        self.tableWidget.setGeometry(QtCore.QRect(20, 210, 991, 401))
         font = QtGui.QFont()
         font.setPointSize(8)
         self.tableWidget.setFont(font)
@@ -68,6 +68,7 @@ class Ui_MainWindow(object):
 "    border: 1px solid #aaa;\n"
 "    gridline-color: #777;\n"
 "    font-size: 14px;\n"
+"    border-radius: 8px;\n"
 "}\n"
 "\n"
 "QHeaderView::section {\n"
@@ -83,18 +84,40 @@ class Ui_MainWindow(object):
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(0)
         self.tableWidget.setRowCount(0)
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(440, 180, 71, 31))
+        self.widget = QtWidgets.QWidget(self.frame)
+        self.widget.setGeometry(QtCore.QRect(0, 0, 1031, 111))
+        self.widget.setStyleSheet("QWidget {\n"
+"    background-color: rgb(0, 0, 255);\n"
+"    border-radius: 5px        \n"
+"}")
+        self.widget.setObjectName("widget")
+        self.label_3 = QtWidgets.QLabel(self.widget)
+        self.label_3.setGeometry(QtCore.QRect(420, 30, 201, 51))
         font = QtGui.QFont()
-        font.setPointSize(8)
+        font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("")
-        self.pushButton.setObjectName("pushButton")
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("QLabel {\n"
+"    color : white\n"
+"    }")
+        self.label_3.setObjectName("label_3")
+        self.pushButton_5 = QtWidgets.QPushButton(self.widget)
+        self.pushButton_5.setGeometry(QtCore.QRect(920, 30, 91, 51))
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_5.setFont(font)
+        self.pushButton_5.setStyleSheet("QPushButton {\n"
+"   background-color: rgb(255, 0, 0);\n"
+"   color: white;    \n"
+"   border-radius: 5px;   \n"
+"   padding: 6px;}")
+        self.pushButton_5.setObjectName("pushButton_5")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 642, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1032, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -104,33 +127,40 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.tableWidget.setColumnCount(6)
-        self.tableWidget.setHorizontalHeaderLabels([
-        "ID Transaksi",
-        "ID Pemeriksaan",
-        "Nama Pasien",
-        "Penyakit",
-        "Tanggal",
-        "Total Bayar"
-        ])
-        self.tableWidget.horizontalHeader().setStretchLastSection(True)
-
-        self.pushButton.clicked.connect(self.load_semua)
-        self.pushButton_2.clicked.connect(self.cari_transaksi)
-        self.pushButton_2.clicked.connect(self.kembali)
+        self.pushButton.clicked.connect(self.cari_transaksi)
+        self.pushButton_5.clicked.connect(self.kembali)
         self.load_semua()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton_2.setText(_translate("MainWindow", "Kembali"))
-        self.label.setText(_translate("MainWindow", "Riwayat Transaksi"))
-        self.label_2.setText(_translate("MainWindow", "ID Transaksi"))
-        self.tableWidget.setSortingEnabled(True)
         self.pushButton.setText(_translate("MainWindow", "Cari"))
+        self.tableWidget.setSortingEnabled(True)
+        self.label_3.setText(_translate("MainWindow", "Data Transaksi"))
+        self.pushButton_5.setText(_translate("MainWindow", "Kembali"))
 
     def tampilkan_data(self, data):
+        self.tableWidget.clearContents()
         self.tableWidget.setRowCount(0)
+        self.tableWidget.setColumnCount(6)
+
+        self.tableWidget.setHorizontalHeaderLabels([
+            "ID Transaksi",
+            "ID Pemeriksaan",
+            "Nama Pasien",
+            "Penyakit",
+            "Tanggal",
+            "Total Bayar"
+        ])
+
+        # tabel hanya view (tidak bisa diedit)
+        self.tableWidget.setEditTriggers(
+            QtWidgets.QAbstractItemView.NoEditTriggers
+        )
+
+        # kolom otomatis menyesuaikan lebar
+        header = self.tableWidget.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         for row_number, row_data in enumerate(data):
             self.tableWidget.insertRow(row_number)
@@ -141,11 +171,52 @@ class Ui_MainWindow(object):
                 if hasattr(value, "strftime"):
                     value = value.strftime("%d-%m-%Y")
 
+                # format rupiah (kolom Total Bayar)
+                if column_number == 5:
+                    value = self.format_rupiah(value)
+
+                cell = QtWidgets.QTableWidgetItem(str(value))
+
+                # rata tengah untuk ID & Tanggal
+                if column_number in (0, 1, 4):
+                    cell.setTextAlignment(QtCore.Qt.AlignCenter)
+
+                # rata kanan untuk Total Bayar
+                if column_number == 5:
+                    cell.setTextAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+
                 self.tableWidget.setItem(
                     row_number,
                     column_number,
-                    QtWidgets.QTableWidgetItem(str(value))
+                    cell
                 )
+
+    def format_rupiah(self, angka):
+        try:
+            return "Rp {:,}".format(int(angka)).replace(",", ".")
+        except:
+            return "Rp 0"
+
+    def cari_transaksi(self):
+        id_transaksi = self.lineEdit.text().strip()
+
+        # kalau kosong, tampilkan semua
+        if not id_transaksi:
+            self.load_semua()
+            return
+
+        data = Transaksi.riwayat(id_transaksi)
+
+        if not data:
+            QtWidgets.QMessageBox.information(
+                None,
+                "Info",
+                "Data transaksi tidak ditemukan"
+            )
+            self.tableWidget.setRowCount(0)
+            return
+
+        self.tampilkan_data(data)
 
     def load_semua(self):
         data = Transaksi.riwayat()
@@ -158,6 +229,7 @@ class Ui_MainWindow(object):
         self.window.show()
 
         QtWidgets.QApplication.instance().activeWindow().close()
+
 
 if __name__ == "__main__":
     import sys
