@@ -1,5 +1,6 @@
 # transaksi.py
 from connection import get_connection
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Transaksi:
     def __init__(self, id_transaksi=None, id_pemeriksaan=None, tanggal=None, total_bayar=None):
@@ -88,6 +89,7 @@ class Transaksi:
                 d.nama_dokter,
                 pr.nama_perawat,
                 ps.nama_pasien,
+                ps.penyakit,
                 p.tgl_pemeriksaan,
                 t.total_bayar,
                 l.nama_layanan
@@ -110,15 +112,17 @@ class Transaksi:
         nama_dokter = rows[0][0]
         nama_perawat = rows[0][1]
         nama_pasien = rows[0][2]
-        tgl_pemeriksaan = rows[0][3]
-        total_bayar = rows[0][4]
+        penyakit = rows[0][3]
+        tgl_pemeriksaan = rows[0][4]
+        total_bayar = rows[0][5]
 
-        layanan = [row[5] for row in rows]
+        layanan = [row[6] for row in rows]
 
         return (
             nama_dokter,
             nama_perawat,
             nama_pasien,
+            penyakit,
             tgl_pemeriksaan,
             total_bayar,
             layanan
@@ -137,3 +141,59 @@ class Transaksi:
 
         conn.commit()
         conn.close()
+
+    @staticmethod
+    def riwayat(id_transaksi=None):
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        if id_transaksi:
+            cursor.execute("""
+                SELECT 
+                    t.id_transaksi,
+                    p.id_pemeriksaan,
+                    ps.nama_pasien,
+                    ps.penyakit,
+                    t.tanggal,
+                    t.total_bayar
+                FROM transaksi t
+                JOIN pemeriksaan p ON t.id_pemeriksaan = p.id_pemeriksaan
+                JOIN pasien ps ON p.id_pasien = ps.id_pasien
+                WHERE t.id_transaksi = %s
+            """, (id_transaksi,))
+        else:
+            cursor.execute("""
+                SELECT 
+                    t.id_transaksi,
+                    p.id_pemeriksaan,
+                    ps.nama_pasien,
+                    ps.penyakit,
+                    t.tanggal,
+                    t.total_bayar
+                FROM transaksi t
+                JOIN pemeriksaan p ON t.id_pemeriksaan = p.id_pemeriksaan
+                JOIN pasien ps ON p.id_pasien = ps.id_pasien
+                ORDER BY t.tanggal DESC
+            """)
+
+        data = cursor.fetchall()
+        conn.close()
+        return data
+
+    def tampilkan_data(self, data):
+        self.tableWidget.setRowCount(0)
+
+        for row_number, row_data in enumerate(data):
+            self.tableWidget.insertRow(row_number)
+
+            for column_number, value in enumerate(row_data):
+
+                # kalau tipe tanggal
+                if hasattr(value, "strftime"):
+                    value = value.strftime("%d-%m-%Y")
+
+                self.tableWidget.setItem(
+                    row_number,
+                    column_number,
+                    QtWidgets.QTableWidgetItem(str(value)))
+

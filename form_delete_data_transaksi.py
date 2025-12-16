@@ -199,6 +199,7 @@ class Ui_MainWindow(object):
             nama_dokter,
             nama_perawat,
             nama_pasien,
+            penyakit,
             tgl_pemeriksaan,
             total_bayar,
             layanan_list
@@ -207,6 +208,7 @@ class Ui_MainWindow(object):
         self.label_10.setText(nama_dokter)
         self.label_11.setText(nama_perawat)
         self.label_12.setText(nama_pasien)
+        self.label_13.setText(penyakit)
         self.label_14.setText(tgl_pemeriksaan.strftime("%d-%m-%Y"))
         self.label_15.setText(self.format_rupiah(total_bayar))
 
