@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit.setGeometry(QtCore.QRect(230, 180, 191, 31))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(8)
         self.lineEdit.setFont(font)
         self.lineEdit.setStyleSheet("padding: 6px;\n"
 "background: white;\n"
@@ -61,7 +61,7 @@ class Ui_MainWindow(object):
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setGeometry(QtCore.QRect(110, 240, 431, 141))
         font = QtGui.QFont()
-        font.setPointSize(-1)
+        font.setPointSize(8)
         self.tableWidget.setFont(font)
         self.tableWidget.setStyleSheet("QTableWidget {\n"
 "    background: white;\n"
@@ -116,8 +116,9 @@ class Ui_MainWindow(object):
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
 
         self.pushButton.clicked.connect(self.load_semua)
+        self.pushButton_2.clicked.connect(self.cari_transaksi)
         self.pushButton_2.clicked.connect(self.kembali)
-        self.load_semua
+        self.load_semua()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -127,6 +128,24 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "ID Transaksi"))
         self.tableWidget.setSortingEnabled(True)
         self.pushButton.setText(_translate("MainWindow", "Cari"))
+
+    def tampilkan_data(self, data):
+        self.tableWidget.setRowCount(0)
+
+        for row_number, row_data in enumerate(data):
+            self.tableWidget.insertRow(row_number)
+
+            for column_number, value in enumerate(row_data):
+
+                # format tanggal
+                if hasattr(value, "strftime"):
+                    value = value.strftime("%d-%m-%Y")
+
+                self.tableWidget.setItem(
+                    row_number,
+                    column_number,
+                    QtWidgets.QTableWidgetItem(str(value))
+                )
 
     def load_semua(self):
         data = Transaksi.riwayat()
