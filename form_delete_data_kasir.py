@@ -224,8 +224,6 @@ class Ui_MainWindow(object):
                 self.label_24.setText("Data tidak ditemukan")
                 return
 
-        # urutan:
-        # 0=id, 1=nama, 2=umur, 3=username, 4=password
         self.label_12.setText(data[1])        # nama
         self.label_13.setText(data[3])        # username
         self.label_15.setText(data[4])        # password

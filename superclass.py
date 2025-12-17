@@ -8,11 +8,9 @@ class User:
         self.__umur = umur
         self.__id_level = id_level
 
-        # koneksi dipakai bersama (penting buat login)
         self.conn = get_connection()
         self.cursor = self.conn.cursor()
 
-    # ===== Getter =====
     def get_id(self):
         return self.__id
 
@@ -25,7 +23,6 @@ class User:
     def get_id_level(self):
         return self.__id_level
 
-    # ===== Setter =====
     def set_nama(self, nama):
         self.__nama = nama
 
@@ -35,7 +32,6 @@ class User:
     def set_id_level(self, id_level):
         self.__id_level = id_level
 
-    # ===== CRUD USER =====
     def insert(self):
         sql = """
             INSERT INTO user (id, nama, umur, id_level)
@@ -77,7 +73,6 @@ class User:
         conn.close()
         print("User berhasil dihapus....")
 
-    # ===== LOGIN =====
     def login_admin(self, username, password):
         sql = """
             SELECT admin.id_admin, user.nama

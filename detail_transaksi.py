@@ -6,7 +6,6 @@ class DetailTransaksi:
         self.id_transaksi = id_transaksi
         self.id_layanan = id_layanan
 
-    # ================= INSERT =================
     def insert(self):
         conn = get_connection()
         cursor = conn.cursor()
@@ -21,7 +20,6 @@ class DetailTransaksi:
         conn.commit()
         conn.close()
 
-    # ================= DISPLAY BY TRANSAKSI =================
     @staticmethod
     def get_by_transaksi(id_transaksi):
         conn = get_connection()

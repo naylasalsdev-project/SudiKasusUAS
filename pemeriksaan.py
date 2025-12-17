@@ -9,7 +9,6 @@ class Pemeriksaan:
         self.id_pasien = id_pasien
         self.tanggal = tanggal
 
-    # ================= INSERT =================
     def insert(self):
         db = get_connection()
         cursor = db.cursor()
@@ -29,7 +28,6 @@ class Pemeriksaan:
         cursor.close()
         db.close()
 
-    # ================= SELECT BY ID =================
     @staticmethod
     def select_by_id(id_pem):
         db = get_connection()
@@ -47,7 +45,6 @@ class Pemeriksaan:
         db.close()
         return data
 
-    # ================= UPDATE =================
     def update(self):
         db = get_connection()
         cursor = db.cursor()
@@ -74,7 +71,6 @@ class Pemeriksaan:
         cursor.close()
         db.close()
 
-    # ================= DELETE =================
     def delete(self):
         db = get_connection()
         cursor = db.cursor()
@@ -86,7 +82,6 @@ class Pemeriksaan:
         cursor.close()
         db.close()
 
-    # ================= SELECT DETAIL (JOIN) =================
     @staticmethod
     def select_detail_by_id(id_pem):
         db = get_connection()
@@ -150,7 +145,6 @@ class Pemeriksaan:
         cursor.close()
         return data
 
-    # ================= SELECT ALL =================
     @staticmethod
     def get_all():
         conn = get_connection()
@@ -171,7 +165,6 @@ class Pemeriksaan:
         return data
 
 
-    # ================= SELECT BY ID (UNTUK TABEL) =================
     @staticmethod
     def get_by_id(id_pemeriksaan):
         conn = get_connection()

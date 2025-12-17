@@ -7,7 +7,6 @@ class Layanan:
         self.nama_layanan = nama_layanan
         self.biaya = biaya
 
-    # ================= INSERT =================
     def insert(self):
         conn = get_connection()
         cursor = conn.cursor()
@@ -19,7 +18,6 @@ class Layanan:
         conn.commit()
         conn.close()
 
-    # ================= DISPLAY =================
     @staticmethod
     def display():
         conn = get_connection()
@@ -49,7 +47,6 @@ class Layanan:
         conn.commit()
         conn.close()
 
-    # ================= SELECT BY ID =================
     @staticmethod
     def select_by_id(id_layanan):
         conn = get_connection()

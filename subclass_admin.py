@@ -9,14 +9,10 @@ class Admin(User):
         self.__username = username
         self.__password = password
 
-    # =========================
-    # CREATE / INSERT
-    # =========================
+
     def insert(self):
-        # insert ke tabel USER
         super().insert()
 
-        # insert ke tabel ADMIN
         sql = """
             INSERT INTO admin (id_admin, username, password)
             VALUES (%s, %s, %s)
@@ -25,9 +21,6 @@ class Admin(User):
         self.conn.commit()
         print("Admin berhasil ditambahkan....")
 
-    # =========================
-    # READ
-    # =========================
     @staticmethod
     def display():
         conn = get_connection()
@@ -68,9 +61,6 @@ class Admin(User):
         conn.close()
         return data
 
-    # =========================
-    # UPDATE
-    # =========================
     def update(self):
         # update tabel USER
         super().update()
@@ -85,9 +75,6 @@ class Admin(User):
         self.conn.commit()
         print("Admin berhasil diupdate....")
 
-    # =========================
-    # DELETE
-    # =========================
     def delete(self):
         # hapus dari admin dulu
         sql = "DELETE FROM admin WHERE id_admin=%s"
@@ -98,9 +85,6 @@ class Admin(User):
         User.delete(self.get_id())
         print("Admin berhasil dihapus....")
 
-    # =========================
-    # LOGIN
-    # =========================
     @staticmethod
     def cek_login(username, password):
         conn = get_connection()
@@ -116,10 +100,7 @@ class Admin(User):
         cursor.close()
         conn.close()
         return data
-    
-    # =========================
-    # READ (UNTUK GUI)
-    # =========================
+
     @staticmethod
     def get_all_admin():
         conn = get_connection()

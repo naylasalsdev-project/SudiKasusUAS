@@ -11,7 +11,6 @@ from subclass_admin import Admin
 from subclass_kasir import Kasir
 import dashboard_admin as da
 import dashboard_kasir as dk
-import halaman_awal as ha
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 

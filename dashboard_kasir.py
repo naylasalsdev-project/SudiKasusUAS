@@ -131,8 +131,7 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "Hapus Transaksi"))
         self.label.setText(_translate("MainWindow", "Dashboard Kasir"))
         self.pushButton_5.setText(_translate("MainWindow", "Logout"))
-        
-        
+             
     def tampah_transaksi(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = fidt.Ui_MainWindow()

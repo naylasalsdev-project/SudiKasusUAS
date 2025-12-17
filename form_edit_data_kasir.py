@@ -219,8 +219,6 @@ class Ui_MainWindow(object):
                 )
                 return
 
-        # urutan dari SQL:
-        # 0=id_kasir, 1=nama, 2=username, 3=password, 4=umur
         self.lineEdit_4.setText(kasir[1])          # nama
         self.lineEdit_5.setText(kasir[2])          # username
         self.lineEdit_6.setText(kasir[3])          # password

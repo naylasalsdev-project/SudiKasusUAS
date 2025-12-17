@@ -8,10 +8,8 @@ class Perawat(User):
         self._shift = shift
 
     def insert(self):
-        # 1️⃣ insert ke user
         super().insert()
 
-        # 2️⃣ insert ke perawat (ISI nama_perawat)
         conn = get_connection()
         cursor = conn.cursor()
         query = """
@@ -25,7 +23,6 @@ class Perawat(User):
         conn.commit()
         conn.close()
 
-    # ================= DISPLAY =================
     @staticmethod
     def display():
         db = get_connection()
@@ -41,12 +38,9 @@ class Perawat(User):
         db.close()
         return data
 
-    # ================= UPDATE =================
     def update(self):
-        # update tabel user
         super().update()
 
-        # update tabel perawat
         db = get_connection()
         cursor = db.cursor()
         sql = """
@@ -59,10 +53,8 @@ class Perawat(User):
         cursor.close()
         db.close()
 
-    # ================= DELETE =================
     @staticmethod
     def delete(id_perawat):
-        # 1️⃣ hapus dari tabel perawat dulu
         conn = get_connection()
         cursor = conn.cursor()
         cursor.execute(
@@ -72,10 +64,8 @@ class Perawat(User):
         conn.commit()
         conn.close()
 
-        # 2️⃣ hapus dari user
         User.delete(id_perawat)
 
-    # ================= SELECT BY ID =================
     @staticmethod
     def select_by_id(id_perawat):
         db = get_connection()
@@ -92,7 +82,6 @@ class Perawat(User):
         db.close()
         return data
 
-    # ================= SELECT ALL (UNTUK TABEL) =================
     @staticmethod
     def get_all():
         conn = get_connection()
@@ -112,8 +101,6 @@ class Perawat(User):
         conn.close()
         return data
 
-
-    # ================= SELECT BY ID (UNTUK TABEL) =================
     @staticmethod
     def get_by_id(id_perawat):
         conn = get_connection()

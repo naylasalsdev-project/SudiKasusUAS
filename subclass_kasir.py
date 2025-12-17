@@ -8,9 +8,6 @@ class Kasir(User):
         self.__username = username
         self.__password = password
 
-    # =========================
-    # CREATE / INSERT
-    # =========================
     def insert(self):
         super().insert()
 
@@ -25,9 +22,6 @@ class Kasir(User):
         self.conn.commit()
         print("Kasir berhasil ditambahkan....")
 
-    # =========================
-    # READ
-    # =========================
     @staticmethod
     def select_by_id(id_kasir):
         conn = get_connection()
@@ -70,9 +64,6 @@ class Kasir(User):
         conn.close()
         return data
 
-    # =========================
-    # UPDATE
-    # =========================
     def update(self):
         super().update()
 
@@ -88,9 +79,6 @@ class Kasir(User):
         self.conn.commit()
         print("Kasir berhasil diupdate....")
 
-    # =========================
-    # DELETE
-    # =========================
     def delete(self):
         sql = "DELETE FROM kasir WHERE id_kasir=%s"
         self.cursor.execute(sql, (self.get_id(),))
@@ -99,9 +87,6 @@ class Kasir(User):
         User.delete(self.get_id())
         print("Kasir berhasil dihapus....")
 
-    # =========================
-    # LOGIN
-    # =========================
     @staticmethod
     def cek_login(username, password):
         conn = get_connection()

@@ -7,10 +7,8 @@ class Pasien(User):
         self._penyakit = penyakit
 
     def insert(self):
-        # 1️⃣ insert ke user (ADA nama)
         super().insert()
 
-        # 2️⃣ insert ke pasien (ISI nama_pasien juga)
         conn = get_connection()
         cursor = conn.cursor()
         query = """
@@ -35,10 +33,8 @@ class Pasien(User):
         return data
 
     def update(self):
-        # update user
         super().update()
 
-        # update pasien
         conn = get_connection()
         cursor = conn.cursor()
         query = """
@@ -51,7 +47,6 @@ class Pasien(User):
         conn.close()
 
     def delete(self):
-        # hapus pasien & user
         super().delete(self.get_id())
 
     @staticmethod
@@ -71,10 +66,7 @@ class Pasien(User):
         data = cursor.fetchone()
         conn.close()
         return data
-    
-    # =========================
-    # READ (UNTUK GUI)
-    # =========================
+ 
     @staticmethod
     def get_all_pasien():
         conn = get_connection()
@@ -93,7 +85,6 @@ class Pasien(User):
         cursor.close()
         conn.close()
         return data
-
 
     @staticmethod
     def get_pasien_by_id(id_pasien):

@@ -172,7 +172,7 @@ class Ui_MainWindow(object):
             self.lineEdit_5.setText(data[1])
             self.lineEdit_6.setText(str(data[2]))
 
-            id_level = data[5]  # 🔥 INI KUNCINYA
+            id_level = data[5]  
 
             for i in range(self.comboBox.count()):
                 if self.comboBox.itemData(i) == id_level:
@@ -204,7 +204,6 @@ class Ui_MainWindow(object):
 
         for id_level, nama_level in data_level:
             self.comboBox.addItem(nama_level, id_level)
-
 
 
     def kembali(self):

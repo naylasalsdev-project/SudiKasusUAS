@@ -9,7 +9,6 @@ class Transaksi:
         self.tanggal = tanggal
         self.total_bayar = total_bayar
 
-    # ================= INSERT =================
     def insert(self):
         conn = get_connection()
         cursor = conn.cursor()
@@ -24,13 +23,11 @@ class Transaksi:
         ))
         conn.commit()
 
-        # ambil id_transaksi terakhir (penting buat detail_transaksi)
         self.id_transaksi = cursor.lastrowid
 
         conn.close()
         return self.id_transaksi
 
-    # ================= DISPLAY =================
     @staticmethod
     def display():
         conn = get_connection()
@@ -55,7 +52,6 @@ class Transaksi:
         conn.close()
         return data
 
-    # ================= DELETE =================
     def delete(self):
         conn = get_connection()
         cursor = conn.cursor()
@@ -66,7 +62,6 @@ class Transaksi:
         conn.commit()
         conn.close()
 
-    # ================= CEK SUDAH TRANSAKSI =================
     @staticmethod
     def cek_transaksi(id_pemeriksaan):
         conn = get_connection()
@@ -79,7 +74,6 @@ class Transaksi:
         conn.close()
         return data
 
-    # ================= CARI BY PEMERIKSAAN =================
     @staticmethod
     def cari_by_pemeriksaan(id_transaksi):
         conn = get_connection()
